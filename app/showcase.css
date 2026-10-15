@@ -25,6 +25,11 @@
 .showcase .sc-btn:hover{transform:translateY(-2px)}
 .showcase .sc-gold{background:linear-gradient(180deg,#F1D79C,#D9B670);color:#2A1C0E;
   box-shadow:0 6px 18px rgba(198,162,92,.25)}
+/* The design pins the WhatsApp glyph ("svg.wa{width:18px;height:18px;flex:none}").
+   Our <svg> carries a viewBox but no width/height, so inside a flex button it
+   grows to fill the container — this is what made the buttons absurdly tall. */
+.showcase .sc-btn svg{width:18px;height:18px;flex:none}
+.showcase .sc-wa svg{width:22px;height:22px}
 .showcase .sc-eye{font:500 12px var(--sans);letter-spacing:.24em;text-transform:uppercase;
   color:var(--sc-gl)}
 .showcase .sc-scr{font:400 50px/1 var(--script);color:#8A6A2F}
@@ -122,7 +127,7 @@
 .sc-cta .lg img{height:110px;margin:0 auto}
 .sc-cta h2{font:500 clamp(26px,3vw,38px)/1.1 var(--serif);color:var(--sc-gl)}
 .sc-cta .lead{font-size:16px;line-height:1.6;color:#D8CFBF;margin-top:14px}
-.sc-wa{background:var(--wa);color:#08170D;font-size:16px;padding:18px 30px;
+.showcase .sc-wa{background:var(--wa);color:#08170D;font-size:16px;padding:18px 30px;
   justify-content:center;width:100%}
 .sc-proof{display:flex;justify-content:center;gap:16px;font-size:13px;color:#CFC5B5;
   margin-top:16px}
@@ -183,7 +188,10 @@
   .sc-cat.big .sc-btn{padding:11px 18px;font-size:13px}
 
   .sc-why{padding:48px 0 52px}
-  .sc-scr{font-size:40px}
+  .showcase .sc-scr{font-size:40px}
+  .showcase .sc-btn svg{width:16px;height:16px}
+  .showcase .sc-cat .sc-btn svg{width:13px;height:13px}
+  .showcase .sc-wa svg{width:20px;height:20px}
   .sc-why h2{font-size:36px;margin:2px 0 14px}
   .sc-why .lead{font-size:15px}
   .sc-feat{grid-template-columns:1fr 1fr;margin-top:34px}
@@ -213,7 +221,7 @@
   .sc-cta .lg img{height:84px}
   .sc-cta h2{font-size:31px}
   .sc-cta .lead{font-size:15px;margin-top:12px}
-  .sc-wa{font-size:15.5px;padding:17px 22px;margin-top:24px}
+  .showcase .sc-wa{font-size:15.5px;padding:17px 22px;margin-top:24px}
   .sc-proof{gap:12px;font-size:12.5px;margin-top:14px}
   .sc-proof span+span{padding-left:12px}
   .sc-quote{padding:34px 28px 40px;font-size:19px;line-height:1.35}
