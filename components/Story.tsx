@@ -1,7 +1,7 @@
 import { asset } from "@/lib/seo";
 export default function Story() {
   return (
-    <section>
+    <section className="light">
       <div className="wrap">
         <div className="story">
           <div className="story-img rv">

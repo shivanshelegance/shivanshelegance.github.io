@@ -2,6 +2,8 @@
 :root{
   --espresso:#120D08; --ink:#1B130C; --ink2:#241809; --line:rgba(198,162,92,.24);
   --ivory:#F8F3E9; --cream:#EFE4D2; --muted:#B7A590;
+  /* light-section palette: gold is only 2.29:1 on cream, so accents go tan */
+  --cream-lt:#FCF9F1; --tan-ink:#7D5C3E; --muted-ink:#5A5045; --blush:#B27967;
   --gold:#C6A25C; --gold-lt:#E3C98A; --camel:#8E6554; --sand:#D1A083;
   --wa:#25D366; --wa-dk:#1DA851;
   --serif:"Cormorant Garamond","Didot",Georgia,"Times New Roman",serif;
@@ -24,7 +26,7 @@ h2{font-size:clamp(32px,4.4vw,54px)}
 h3{font-size:clamp(20px,2.2vw,26px)}
 p{color:var(--muted)}
 .gold{color:var(--gold)}
-section{padding:clamp(64px,8vw,112px) 0}
+section{padding:clamp(78px,9vw,132px) 0}
 
 /* buttons */
 .btn{display:inline-flex;align-items:center;gap:10px;padding:15px 30px;border-radius:999px;
@@ -61,7 +63,7 @@ body.nav-open .burger span:nth-child(2){opacity:0}
 body.nav-open .burger span:nth-child(3){top:7px;transform:rotate(-45deg)}
 
 /* hero */
-.hero{position:relative;min-height:88vh;display:flex;align-items:center;
+.hero{position:relative;min-height:94vh;display:flex;align-items:center;
   overflow:hidden;padding:0}
 .hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
   filter:saturate(.86) contrast(1.04)}
@@ -82,8 +84,8 @@ body.nav-open .burger span:nth-child(3){top:7px;transform:rotate(-45deg)}
 .shead p{margin-top:12px;max-width:520px;font-size:15.5px}
 
 /* category grid */
-.cats{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
-.cat{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:3/4;
+.cats{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+.cat{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:.7;
   border:1px solid var(--line)}
 .cat img{width:100%;height:100%;object-fit:cover;filter:saturate(.85) brightness(.92);
   transition:transform .7s cubic-bezier(.2,.7,.3,1),filter .5s}
@@ -110,12 +112,12 @@ body.nav-open .burger span:nth-child(3){top:7px;transform:rotate(-45deg)}
 .feat p{font-size:14px}
 
 /* products */
-.prods{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.prods{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
 .prod{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;
   background:rgba(198,162,92,.03);transition:border-color .3s,transform .3s;
   display:flex;flex-direction:column}
 .prod:hover{border-color:rgba(198,162,92,.45);transform:translateY(-4px)}
-.prod-img{position:relative;aspect-ratio:3/4;overflow:hidden}
+.prod-img{position:relative;aspect-ratio:.72;overflow:hidden}
 .prod-img img{width:100%;height:100%;object-fit:cover;filter:saturate(.88);
   transition:transform .7s cubic-bezier(.2,.7,.3,1)}
 .prod:hover .prod-img img{transform:scale(1.05)}
@@ -129,7 +131,7 @@ body.nav-open .burger span:nth-child(3){top:7px;transform:rotate(-45deg)}
 .prod-b .btn{margin-top:auto;padding:12px 18px;font-size:11.5px;justify-content:center}
 
 /* story */
-.story{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.story{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
 .story-img{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:4/5;
   border:1px solid var(--line)}
 .story-img img{width:100%;height:100%;object-fit:cover;filter:saturate(.82)}
@@ -235,3 +237,27 @@ footer li a:hover{color:var(--gold)}
   *{animation:none!important;transition:none!important}
   .rv{opacity:1;transform:none}
 }
+
+
+/* ── Light sections ───────────────────────────────────────────────────
+   Gives the page the dark -> light -> dark rhythm of the reference mockups.
+   All colours here are contrast-checked: body #5A5045 is 7.5:1 on cream,
+   accent #7D5C3E is 5.8:1. Gold is unusable on cream at 2.29:1.          */
+.light{background:var(--cream-lt);color:var(--ink)}
+.light h1,.light h2,.light h3{color:var(--ink)}
+.light p,.light .shead p{color:var(--muted-ink)}
+.light .eyebrow{color:var(--tan-ink)}
+.light .gold{color:var(--tan-ink)}
+.light .feat{border-color:rgba(27,19,12,.13);background:rgba(255,255,255,.5)}
+.light .feat p{color:var(--muted-ink)}
+.light .feat svg{stroke:var(--tan-ink)}
+.light .pillar{border-color:rgba(27,19,12,.18)}
+.light .pillar b{color:var(--tan-ink)}
+.light .pillar span{color:var(--muted-ink)}
+.light .btn-ghost{border-color:rgba(27,19,12,.22);color:var(--ink)}
+.light .btn-ghost:hover{background:var(--ink);color:var(--cream-lt)}
+.light .quote{border-color:rgba(27,19,12,.13)}
+.light .prod{border-color:rgba(27,19,12,.13);background:rgba(255,255,255,.55)}
+.light .prod-b h3{color:var(--ink)}
+.light .prod-b .price{color:var(--tan-ink)}
+.light .prod-b .meta{color:var(--muted-ink)}

@@ -3,7 +3,7 @@ import Icon from "./Icon";
 
 export default function Features() {
   return (
-    <section>
+    <section className="light">
       <div className="wrap">
         <div className="shead rv">
           <div>
