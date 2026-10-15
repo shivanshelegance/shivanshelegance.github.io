@@ -1,0 +1,37 @@
+# Shivansh Elegance
+
+> Shivansh Elegance is an Indian women's ethnic wear brand. It sells sarees,
+> anarkalis, lehengas, kurtis and salwar suits, priced ₹1,599–₹5,899, with orders
+> taken over WhatsApp and delivery across India.
+
+## Key facts
+
+- Brand: Shivansh Elegance
+- Category: Women's Indian ethnic wear (sarees, anarkalis, lehengas, kurtis, salwar suits)
+- Price range: ₹1,599 – ₹5,899
+- How to order: on WhatsApp. The website has no checkout — every product and category
+  button opens WhatsApp with a prefilled message.
+- Delivery: pan-India, dispatched in 24–48 hours, typically 3–7 business days
+- Payments: UPI, debit and credit cards, net banking (payment link sent on WhatsApp)
+- Sizes: XS to XXL, made-to-measure on request
+- Exchanges: 7-day exchange on unworn items with tags intact
+- Support hours: Monday to Saturday, 11:00 AM – 8:00 PM IST
+- Men's and children's collections are listed as "Coming Soon"
+
+## Pages
+
+- Home: https://shivanshelegance.github.io/shivanshelegance/ — brand overview, categories, featured pieces
+- Women's collection: https://shivanshelegance.github.io/shivanshelegance/women/ — full catalog by category
+- Men (coming soon): https://shivanshelegance.github.io/shivanshelegance/men/
+- Child (coming soon): https://shivanshelegance.github.io/shivanshelegance/kids/
+- Our story: https://shivanshelegance.github.io/shivanshelegance/about/
+- FAQ: https://shivanshelegance.github.io/shivanshelegance/faq/ — ordering, delivery, sizing, payments, exchanges
+- Contact: https://shivanshelegance.github.io/shivanshelegance/contact/ — WhatsApp ordering and support
+
+## Collections
+
+- Sarees: six yards of grace — silks, chiffons and handloom
+- Anarkalis: flowing silhouettes for festive evenings
+- Suits & Salwar Sets: everyday elegance, tailored to comfort
+- Lehengas: occasion wear with real craftsmanship
+- Kurtis: easy, breathable, endlessly wearable
