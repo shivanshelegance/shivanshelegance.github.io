@@ -4,8 +4,8 @@
   --ivory:#F8F3E9; --cream:#EFE4D2; --muted:#B7A590;
   --gold:#C6A25C; --gold-lt:#E3C98A; --camel:#8E6554; --sand:#D1A083;
   --wa:#25D366; --wa-dk:#1DA851;
-  --serif:var(--font-display),"Cormorant Garamond","Didot",Georgia,serif;
-  --sans:var(--font-sans),"Jost","Futura","Century Gothic",system-ui,sans-serif;
+  --serif:"Cormorant Garamond","Didot",Georgia,"Times New Roman",serif;
+  --sans:"Jost","Futura","Century Gothic",system-ui,-apple-system,"Segoe UI",sans-serif;
   --maxw:1240px; --r:14px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
