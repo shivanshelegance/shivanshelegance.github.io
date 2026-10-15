@@ -7,7 +7,7 @@ import ProductCard from "@/components/ProductCard";
 import { products, wa } from "@/lib/site";
 import WhatsAppIcon from "@/components/WhatsAppIcon";
 import JsonLd from "@/components/JsonLd";
-import { pageMeta, asset } from "@/lib/seo";
+import { asset, pageMeta, url } from "@/lib/seo";
 
 export const metadata = pageMeta(
   "Shivansh Elegance — Premium Women's Ethnic Wear, Ordered on WhatsApp",
@@ -26,7 +26,7 @@ const itemList = {
       "@type": "Product",
       name: p.name,
       category: p.category,
-      image: `https://shivanshelegance.github.io/shivanshelegance${p.image}`,
+      image: url(p.image),
       offers: { "@type": "Offer", priceCurrency: "INR", price: p.price.replace(/[^0-9]/g, ""), availability: "https://schema.org/InStock" },
     },
   })),

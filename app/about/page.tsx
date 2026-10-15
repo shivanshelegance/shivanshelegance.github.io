@@ -4,7 +4,7 @@ import Quote from "@/components/Quote";
 import Cta from "@/components/Cta";
 import JsonLd from "@/components/JsonLd";
 import PageHeader from "@/components/PageHeader";
-import { pageMeta, url, asset } from "@/lib/seo";
+import { FULL_URL, asset, pageMeta, url } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta(
   "Our Story — Shivansh Elegance",
@@ -16,7 +16,7 @@ const aboutSchema = {
   "@context": "https://schema.org",
   "@type": "AboutPage",
   url: url("/about/"),
-  mainEntity: { "@id": "https://shivanshelegance.github.io/shivanshelegance/#organization" },
+  mainEntity: { "@id": `${FULL_URL}/#organization` },
 };
 
 const crumbs = {

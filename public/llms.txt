@@ -20,13 +20,13 @@
 
 ## Pages
 
-- Home: https://shivanshelegance.github.io/shivanshelegance/ — brand overview, categories, featured pieces
-- Women's collection: https://shivanshelegance.github.io/shivanshelegance/women/ — full catalog by category
-- Men (coming soon): https://shivanshelegance.github.io/shivanshelegance/men/
-- Child (coming soon): https://shivanshelegance.github.io/shivanshelegance/kids/
-- Our story: https://shivanshelegance.github.io/shivanshelegance/about/
-- FAQ: https://shivanshelegance.github.io/shivanshelegance/faq/ — ordering, delivery, sizing, payments, exchanges
-- Contact: https://shivanshelegance.github.io/shivanshelegance/contact/ — WhatsApp ordering and support
+- Home: https://shivanshelegance.github.io/ — brand overview, categories, featured pieces
+- Women's collection: https://shivanshelegance.github.io/women/ — full catalog by category
+- Men (coming soon): https://shivanshelegance.github.io/men/
+- Child (coming soon): https://shivanshelegance.github.io/kids/
+- Our story: https://shivanshelegance.github.io/about/
+- FAQ: https://shivanshelegance.github.io/faq/ — ordering, delivery, sizing, payments, exchanges
+- Contact: https://shivanshelegance.github.io/contact/ — WhatsApp ordering and support
 
 ## Collections
 

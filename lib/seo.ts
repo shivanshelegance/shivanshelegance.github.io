@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 
 export const SITE_URL = "https://shivanshelegance.github.io";
-export const BASE = "/shivanshelegance";
+// Empty for the user-pages repo `shivanshelegance.github.io` (served at the
+// root domain). Set NEXT_PUBLIC_BASE_PATH="/repo-name" only if you later move
+// the site into a project repo.
+export const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 export const FULL_URL = `${SITE_URL}${BASE}`;
 
 export const ORG = {

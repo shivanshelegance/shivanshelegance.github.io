@@ -1,10 +1,10 @@
 /** @type {import('next').NextConfig} */
 
-// GitHub Pages serves a PROJECT repo (shivanshelegance/shivanshelegance) from
-// https://shivanshelegance.github.io/shivanshelegance/, so assets need that prefix.
-// If you instead create the user-pages repo `shivanshelegance.github.io`, build with
-// NEXT_PUBLIC_BASE_PATH="" and the site serves from the root domain.
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "/shivanshelegance";
+// Serving from the user-pages repo `shivanshelegance.github.io`, i.e. the root
+// domain, so there is no base path. If you ever move the site into a PROJECT repo
+// (e.g. shivanshelegance/shivanshelegance, served at /shivanshelegance/), build with
+// NEXT_PUBLIC_BASE_PATH="/shivanshelegance" and everything follows automatically.
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 const nextConfig = {
   output: "export",

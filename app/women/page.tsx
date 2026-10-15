@@ -27,7 +27,7 @@ const collectionSchema = {
         "@type": "Product",
         name: p.name,
         category: p.category,
-        image: `https://shivanshelegance.github.io/shivanshelegance${p.image}`,
+        image: url(p.image),
         offers: { "@type": "Offer", priceCurrency: "INR", price: p.price.replace(/[^0-9]/g, ""), availability: "https://schema.org/InStock" },
       },
     })),
