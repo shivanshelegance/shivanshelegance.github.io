@@ -6,6 +6,7 @@ import { business, site } from "@/lib/site";
 import { FULL_URL, ORG, url } from "@/lib/seo";
 import "./fonts.css";
 import "./globals.css";
+import "./showcase.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(FULL_URL),

@@ -8,6 +8,7 @@
   --wa:#25D366; --wa-dk:#1DA851;
   --serif:"Cormorant Garamond","Didot",Georgia,"Times New Roman",serif;
   --sans:"Jost","Futura","Century Gothic",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --script:"Pinyon Script","Segoe Script","Brush Script MT",cursive;
   --maxw:1240px; --r:14px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
@@ -261,3 +262,13 @@ footer li a:hover{color:var(--gold)}
 .light .prod-b h3{color:var(--ink)}
 .light .prod-b .price{color:var(--tan-ink)}
 .light .prod-b .meta{color:var(--muted-ink)}
+
+
+/* Header floats over the hero on the showcase home page, matching the Doop
+   artboard (logo 74px, nav over the image). A scrim keeps the links legible
+   where the nav crosses the photograph. */
+header.over-hero{position:absolute;top:0;left:0;right:0;z-index:40;background:transparent}
+header.over-hero:before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(18,13,8,.82),rgba(18,13,8,0))}
+header.over-hero .logo img{height:74px}
+@media (max-width:700px){header.over-hero .logo img{height:52px}}

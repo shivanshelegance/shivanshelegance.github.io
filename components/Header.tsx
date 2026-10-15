@@ -17,22 +17,29 @@ const links = [
 
 export default function Header() {
   const pathname = usePathname();
+  const isHome = pathname === "/";
 
   useEffect(() => {
     const hdr = document.querySelector("header");
     const onScroll = () => {
-      if (hdr) {
-        (hdr as HTMLElement).style.background =
-          window.scrollY > 40 ? "rgba(18,13,8,.96)" : "rgba(18,13,8,.82)";
-      }
+      if (!hdr) return;
+      // On the showcase home the header floats over the hero: transparent at
+      // the top, solid once you scroll past it.
+      (hdr as HTMLElement).style.background = isHome
+        ? window.scrollY > 40
+          ? "rgba(18,13,8,.96)"
+          : "transparent"
+        : window.scrollY > 40
+        ? "rgba(18,13,8,.96)"
+        : "rgba(18,13,8,.82)";
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [isHome]);
 
   return (
-    <header>
+    <header className={isHome ? "over-hero" : undefined}>
       <div className="wrap hd">
         <Link className="logo" href="/">
           {/* eslint-disable-next-line @next/next/no-img-element */}
