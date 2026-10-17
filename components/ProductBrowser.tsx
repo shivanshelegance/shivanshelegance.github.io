@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import ProductTile from "./ProductTile";
 import { products } from "@/lib/site";
 
-const FILTERS = ["All", "Sarees", "Anarkalis", "Suits & Salwar", "Lehengas", "Kurtis"];
+const FILTERS = ["All", "Suits", "Kurtis", "Sarees", "Gowns", "Lehengas"];
 type SortKey = "newest" | "bestseller" | "price";
 
 const asNumber = (price: string) => Number(price.replace(/[^\d]/g, "")) || 0;
@@ -42,6 +42,10 @@ export default function ProductBrowser() {
             </button>
           ))}
         </div>
+      </div>
+
+      <div className="sc-bar2">
+        <h2 className="sc-collhead">Our Women&apos;s Collection</h2>
         <label className="sc-sort">
           Sort by
           <select
@@ -49,8 +53,8 @@ export default function ProductBrowser() {
             onChange={(e) => setSort(e.target.value as SortKey)}
             aria-label="Sort products"
           >
-            <option value="newest">Newest first</option>
-            <option value="bestseller">Best seller</option>
+            <option value="newest">Newest First</option>
+            <option value="bestseller">Best Seller</option>
             <option value="price">Price: low to high</option>
           </select>
         </label>

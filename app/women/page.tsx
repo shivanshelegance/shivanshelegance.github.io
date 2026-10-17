@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
 import ShowcaseCta from "@/components/ShowcaseCta";
+import TrustRow from "@/components/TrustRow";
 import JsonLd from "@/components/JsonLd";
 import ProductBrowser from "@/components/ProductBrowser";
 import WhatsAppIcon from "@/components/WhatsAppIcon";
-import { products, trust, wa } from "@/lib/site";
+import { features, products, wa } from "@/lib/site";
 import { asset, pageMeta, url } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta(
-  "Women's Collection — Sarees, Anarkalis, Lehengas, Kurtis | Shivansh Elegance",
-  "Shop women's Indian ethnic wear — sarees, anarkalis, lehengas, kurtis and salwar suits. Filter the collection, pick your size and order on WhatsApp.",
+  "Women's Collection — Suits, Sarees, Lehengas, Kurtis & Gowns | Shivansh Elegance",
+  "Shop women's Indian ethnic wear — embroidered suits, chiffon sarees, lehengas, kurti sets and party gowns. Filter the collection, pick your size and order on WhatsApp.",
   "/women/"
 );
 
@@ -49,6 +50,21 @@ const crumbs = {
   ],
 };
 
+const ICONS: Record<string, React.ReactNode> = {
+  fabric: (
+    <><circle cx="12" cy="9" r="6" /><circle cx="12" cy="9" r="3" /><path d="M8.5 14 7 22l5-3 5 3-1.5-8" /></>
+  ),
+  sparkle: (
+    <><path d="M12 3l2.2 5.5L20 11l-5.8 2.5L12 19l-2.2-5.5L4 11l5.8-2.5z" /><path d="M18 16l.9 2.1L21 19l-2.1.9L18 22l-.9-2.1L15 19l2.1-.9z" /></>
+  ),
+  shield: (
+    <><path d="M12 2 4 5v6c0 5 3.4 9.3 8 11 4.6-1.7 8-6 8-11V5z" /><path d="m8.5 12 2.5 2.5 4.5-5" /></>
+  ),
+  heart: (
+    <><path d="M12 20s-7-4.4-7-9.2A4 4 0 0 1 12 8a4 4 0 0 1 7 2.8C19 15.6 12 20 12 20z" /></>
+  ),
+};
+
 export default function Women() {
   return (
     <div className="showcase">
@@ -71,6 +87,9 @@ export default function Women() {
               Every Thread
             </h1>
             <div className="tri">Elegant suits &nbsp;•&nbsp; Flowy gowns &nbsp;•&nbsp; Graceful sarees</div>
+            <p className="sc-hero-sub">
+              and more &mdash; crafted for your every moment.
+            </p>
             <a
               className="sc-btn sc-gold"
               href={wa("Hi! I'd like to browse the women's collection.", true)}
@@ -88,55 +107,50 @@ export default function Women() {
         </p>
       </section>
 
-      {/* ── COLLECTION ─────────────────────────────────────────── */}
-      <section>
+      {/* ── WHY CHOOSE ─────────────────────────────────────────── */}
+      <section className="sc-why" style={{ padding: "56px 0" }}>
         <div className="sc-wrap">
-          <ProductBrowser />
-
-          <div className="sc-trust">
-            {trust.map((t) => (
-              <div className="sc-trust-i" key={t.title}>
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  {t.icon === "truck" ? (
-                    <>
-                      <path d="M2 6h12v10H2zM14 9h4l4 4v3h-8" />
-                      <circle cx="6" cy="18" r="2" />
-                      <circle cx="18" cy="18" r="2" />
-                    </>
-                  ) : null}
-                  {t.icon === "return" ? (
-                    <>
-                      <path d="M3 12a9 9 0 1 0 3-6.7" />
-                      <path d="M3 4v5h5" />
-                    </>
-                  ) : null}
-                  {t.icon === "shield" ? (
-                    <>
-                      <path d="M12 2 4 5v6c0 5 3.4 9.3 8 11 4.6-1.7 8-6 8-11V5z" />
-                      <path d="m8.5 12 2.5 2.5 4.5-5" />
-                    </>
-                  ) : null}
-                </svg>
-                <div>
-                  <b>{t.title}</b>
-                  <span>{t.blurb}</span>
+          <div className="sc-feat">
+            {features.map((f) => (
+              <div className="sc-f" key={f.key}>
+                <div className="sc-ic">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden="true">
+                    {ICONS[f.key]}
+                  </svg>
                 </div>
+                <h4>{f.title}</h4>
+                <p>{f.body}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
+      {/* ── COLLECTION ─────────────────────────────────────────── */}
+      <section>
+        <div className="sc-wrap">
+          <ProductBrowser />
+
+          <TrustRow />
+        </div>
+      </section>
+
       <ShowcaseCta
         headline={
           <>
-            Want a Piece You Don&apos;t
+            Limited Edition
             <br />
-            See Here?
+            Styles
           </>
         }
-        lead="New arrivals land on WhatsApp first. Tell us your size, colour and occasion and we’ll find the piece for you."
-        message="Hi! I’d like to see the latest women’s collection."
+        lead="Unique designs. Premium fabrics. Only for you."
+        message="Hi! I'd like to see the limited edition styles."
+      />
+
+      <ShowcaseCta
+        headline="Stay Connected"
+        lead="Follow us for the latest styles, offers and more."
+        message="Hi! I'd like to stay updated on new arrivals and offers."
       />
     </div>
   );

@@ -6,6 +6,7 @@ import ProductOptions from "@/components/ProductOptions";
 import ProductTabs from "@/components/ProductTabs";
 import ProductTile from "@/components/ProductTile";
 import ShowcaseCta from "@/components/ShowcaseCta";
+import TrustRow from "@/components/TrustRow";
 import { products, productBySlug, shipping, sizeGuide, wa } from "@/lib/site";
 import { asset, pageMeta, url } from "@/lib/seo";
 
@@ -103,7 +104,7 @@ export default async function ProductPage({ params }: Params) {
             <div className="sc-dimg">
               {p.tag ? <span className="sc-tag">{p.tag}</span> : null}
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={asset(p.image)} alt={p.name} />
+              <img src={asset(p.detailImage ?? p.image)} alt={p.name} />
             </div>
 
             <div className="sc-dinfo">
@@ -138,6 +139,8 @@ export default async function ProductPage({ params }: Params) {
               />
             </div>
           </div>
+
+          <TrustRow />
 
           <ProductTabs
             specs={p.specs}

@@ -6,14 +6,14 @@ import { wa } from "@/lib/site";
 
 /** Swatch fills for the colour names used in the catalogue. */
 const SWATCH: Record<string, string> = {
-  Teal: "#1F6F6B", Wine: "#6E2639", "Midnight Blue": "#1E2A44",
-  Maroon: "#6B1F2E", Emerald: "#1E6B45", Ivory: "#EFE6D2",
-  "Rose Pink": "#D98CA0", Mustard: "#C99A2E", Grey: "#8A8A8A",
-  "Rust Orange": "#B4602C", Indigo: "#2F3A6B", Olive: "#6B7340",
-  Navy: "#1C2A4A", Blush: "#E3B9A8", "Black & Red": "#8E1F2B",
-  "Peacock Blue": "#1E5F8C", "Temple Gold": "#B8902F",
-  "Bottle Green": "#1F5137", Plum: "#5B2C4A", Charcoal: "#3A3A3A",
-  "Sky Blue": "#7FA8C9", Coral: "#E07A62", Beige: "#CBB79B",
+  "Rose Pink": "#DA8490", "Dusty Mauve": "#D5A4BD", "Silver Grey": "#ADB4B5",
+  Charcoal: "#686461", Black: "#1A1A1A", Ivory: "#EFE6D2", Multi: "#C18169",
+  Lavender: "#B47C8B", Mustard: "#C9A227", Coral: "#E07A62", Olive: "#6B7340",
+  Beige: "#CBB79B", Rust: "#B4602C", Maroon: "#6B1F2E", Wine: "#6E2639",
+  Teal: "#1F6F6B", Navy: "#1C2A4A", Blush: "#E3B9A8", Emerald: "#1E6B45",
+  Indigo: "#2F3A6B", Plum: "#5B2C4A", Grey: "#8A8A8A", "Sky Blue": "#7FA8C9",
+  "Midnight Blue": "#1E2A44", "Peacock Blue": "#1E5F8C", "Bottle Green": "#1F5137",
+  "Temple Gold": "#B8902F", "Rust Orange": "#B4602C", "Black & Red": "#8E1F2B",
 };
 
 const swatch = (name: string) =>
