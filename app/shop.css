@@ -254,8 +254,12 @@
 .se-ref .love-list p{display:flex;align-items:flex-start}
 .se-ref .quality i,.se-ref .hero-feature i,.se-ref .benefit i{display:flex;align-items:center;justify-content:center;flex:none}
 .se-ref .hero-content h1{letter-spacing:-1px}
-/* the whole shop page sits on the reference's cream ground */
-.se-ref{min-height:100vh}
+/* the whole shop page sits on the reference's cream ground.
+   Scoped to main > .se-ref on purpose: layout.tsx also wraps SiteHeader and
+   SiteFooter each in their own .se-ref. An unscoped min-height:100vh made
+   those two wrappers reserve a full viewport each, pushing <main> down by
+   100vh and leaving ~900px of blank cream under the header and the footer. */
+main > .se-ref{min-height:100vh}
 
 /* ── neutralise the site's global element rules ──────────────────────────
    globals.css styles bare elements (`p`, `section`, `nav a`, `footer`, `.hero`).
