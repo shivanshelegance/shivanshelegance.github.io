@@ -1,0 +1,283 @@
+/* ==========================================================================
+   Shop pages — reference implementation's visual language, adopted verbatim
+   from the supplied reference HTML and scoped under .se-ref so it cannot
+   affect the rest of the site.
+
+   Fonts: Cormorant Garamond (display) + DM Sans (body), loaded via the
+   layout's Google Fonts <link> (client-side, so it never runs at build time).
+   ========================================================================== */
+
+.se-ref{
+  --gold:#c69b45;
+  --dark:#14110d;
+  --cream:#faf7f0;
+  --beige:#f4e9d6;
+  --text:#24211e;
+  --muted:#77716a;
+  --green:#07893f;
+  --border:#e9dfcf;
+  background:var(--cream);
+  color:var(--text);
+  font-family:'DM Sans',system-ui,-apple-system,Segoe UI,sans-serif;
+  font-size:13px;
+}
+.se-ref h1,.se-ref h2,.se-ref h3,.se-ref h4,.se-ref p,.se-ref ul,.se-ref ol{margin:0}
+.se-ref h1,.se-ref h2,.se-ref h3,.se-ref h4{font-family:'Cormorant Garamond',Georgia,serif}
+.se-ref ul,.se-ref ol{padding:0;list-style:none}
+.se-ref img{display:block}
+
+.se-ref{--gold:#c69b45; --dark:#14110d; --cream:#faf7f0; --beige:#f4e9d6; --text:#24211e; --muted:#77716a; --green:#07893f; --border:#e9dfcf;}
+.se-ref,.se-ref *,.se-ref *::before,.se-ref *::after{margin:0;padding:0;box-sizing:border-box}
+.se-ref{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);font-size:13px}
+.se-ref h1,.se-ref h2,.se-ref h3,.se-ref h4{font-family:'Cormorant Garamond',serif}
+.se-ref button,.se-ref select{font-family:inherit;cursor:pointer}
+.se-ref button{border:0}
+.se-ref a{text-decoration:none;color:inherit}
+.se-ref img{display:block;width:100%;object-fit:cover}
+.se-ref .container{max-width:1440px;margin:auto;padding:0 38px}
+.se-ref header{height:100px;background:linear-gradient(90deg,#100e0b,#21180f 75%,#14110d);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 55px;border-bottom:1px solid var(--gold);position:relative;z-index:10}
+.se-ref .logo{text-align:center;color:#eac05d;min-width:145px;cursor:pointer}
+.se-ref .logo-symbol{font-family:'Cormorant Garamond',serif;font-size:51px;line-height:39px;font-style:italic}
+.se-ref .logo-name{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:23px;line-height:23px}
+.se-ref .logo-sub{font-size:9px;letter-spacing:4px}
+.se-ref .logo-tag{font-size:6px;letter-spacing:2px;margin-top:3px}
+.se-ref nav{display:flex;align-items:center;gap:42px}
+.se-ref nav a{font-size:13px;padding:10px 0;position:relative}
+.se-ref nav a.active{color:#f4cb73}
+.se-ref nav a.active:after{content:"";position:absolute;bottom:0;left:0;width:100%;height:2px;background:#e5ba5e}
+.se-ref .whatsapp-header{color:white;border:1px solid #e5bd64;background:#17130e;border-radius:30px;padding:11px 18px;font-size:12px;display:flex;align-items:center;gap:10px}
+.se-ref .whatsapp-header i{font-size:20px}
+.se-ref .hero{height:390px;position:relative;overflow:hidden;background:#24180e}
+.se-ref .hero img{width:100%;height:100%;object-position:center 35%}
+.se-ref .hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.65) 35%,transparent 80%)}
+.se-ref .hero-content{position:absolute;top:50%;left:7.5%;transform:translateY(-50%);z-index:2;color:#fff}
+.se-ref .eyebrow{letter-spacing:4px;font-size:13px;font-weight:600;margin-bottom:12px}
+.se-ref .hero h1{font-size:68px;line-height:.88;font-weight:600;letter-spacing:-1px}
+.se-ref .hero p{font-size:15px;line-height:1.7;margin-top:20px}
+.se-ref .hero-features{display:flex;gap:28px;margin-top:35px}
+.se-ref .hero-feature{display:flex;align-items:center;gap:10px;font-size:11px;line-height:1.5}
+.se-ref .hero-feature i{font-size:25px;color:#e4bd61}
+.se-ref .categories{display:flex;justify-content:center;gap:45px;padding:25px 15px 28px}
+.se-ref .category{text-align:center;background:none;min-width:76px;color:#24211e}
+.se-ref .category-icon{width:54px;height:54px;border-radius:50%;background:#f5ead9;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;font-size:25px;color:#987039;transition:.2s}
+.se-ref .category.active .category-icon,.se-ref .category:hover .category-icon{background:#f8d58c;color:#3a2916}
+.se-ref .category span{font-size:12px}
+.se-ref .section-heading{display:flex;align-items:center;gap:18px;margin-bottom:23px}
+.se-ref .section-heading h2{font-size:29px;font-weight:600;white-space:nowrap}
+.se-ref .heading-line{height:1px;background:#d9b679;flex:1}
+.se-ref .sort{display:flex;align-items:center;gap:12px;font-size:11px;margin-left:10px;white-space:nowrap}
+.se-ref .sort select{padding:11px 14px;background:transparent;border:1px solid var(--border);border-radius:5px;font-size:11px}
+.se-ref .product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.se-ref .product-card{background:#fff;border:1px solid #eee5d9;border-radius:7px;overflow:hidden;transition:.2s}
+.se-ref .product-card:hover{box-shadow:0 8px 26px #5a3c1817;transform:translateY(-2px)}
+.se-ref .product-image{height:255px;position:relative;overflow:hidden;cursor:pointer}
+.se-ref .product-image img{height:100%;transition:transform .4s}
+.se-ref .product-card:hover .product-image img{transform:scale(1.04)}
+.se-ref .badge{position:absolute;top:9px;left:9px;background:#f8d780;border-radius:7px;padding:5px 9px;font-size:10px;font-weight:700}
+.se-ref .product-info{padding:11px 13px 13px}
+.se-ref .product-title{font-size:11px;font-weight:600;margin-bottom:7px;cursor:pointer}
+.se-ref .product-price{font-size:13px;font-weight:700;margin-bottom:11px}
+.se-ref .card-whatsapp{background:#f9e6c1;border-radius:20px;padding:9px 10px;width:100%;font-size:10px;font-weight:700;display:flex;justify-content:center;align-items:center;gap:8px}
+.se-ref .card-whatsapp i{font-size:17px}
+.se-ref .card-whatsapp:hover{background:#edcb8f}
+.se-ref .promo{height:175px;border-radius:9px;overflow:hidden;position:relative;margin:28px 0 24px;background:#382215}
+.se-ref .promo img{height:100%;object-position:center 40%}
+.se-ref .promo:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#21140de8,transparent 85%)}
+.se-ref .promo-content{position:absolute;left:7%;top:50%;transform:translateY(-50%);color:#fff;z-index:1}
+.se-ref .promo h2{font-size:31px;line-height:.95}
+.se-ref .promo p{font-size:12px;margin:8px 0 13px}
+.se-ref .promo button{background:#f8d991;border-radius:30px;padding:10px 23px;font-size:11px;font-weight:700}
+.se-ref .promo button i{margin-right:8px;font-size:15px}
+.se-ref .detail-container{padding-top:26px}
+.se-ref .breadcrumb{display:flex;gap:13px;align-items:center;color:#59606a;font-size:11px;margin-bottom:27px}
+.se-ref .breadcrumb strong{color:#222;font-weight:500}
+.se-ref .detail-layout{display:grid;grid-template-columns:55% 1fr;gap:32px}
+.se-ref .gallery{display:grid;grid-template-columns:65px 1fr;gap:16px}
+.se-ref .thumbnails{display:flex;flex-direction:column;gap:10px}
+.se-ref .thumb{height:76px;border:2px solid transparent;border-radius:5px;overflow:hidden;cursor:pointer}
+.se-ref .thumb.active{border-color:#b6863b}
+.se-ref .thumb img{height:100%}
+.se-ref .main-image{height:575px;border-radius:5px;overflow:hidden;position:relative}
+.se-ref .main-image img{height:100%;object-position:center top}
+.se-ref .zoom-btn{position:absolute;bottom:16px;right:16px;width:33px;height:33px;border-radius:50%;background:#27231ed9;color:#fff}
+.se-ref .detail-info h1{font-size:31px;line-height:1.1;font-weight:600;margin-bottom:13px}
+.se-ref .price-row{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.se-ref .detail-price{font-size:27px;font-weight:700}
+.se-ref .best-seller{background:#f8d589;padding:7px 11px;border-radius:6px;font-size:11px;font-weight:700}
+.se-ref .rating{font-size:12px;color:#b9842c;margin-bottom:23px}
+.se-ref .rating span{color:#5a5e64;margin-left:8px;font-size:11px}
+.se-ref .description{line-height:1.8;font-size:13px;color:#4b4e53;margin-bottom:22px}
+.se-ref .qualities{display:flex;justify-content:space-between;margin-bottom:28px;gap:8px}
+.se-ref .quality{display:flex;align-items:center;gap:9px;font-size:10px;line-height:1.5;flex:1}
+.se-ref .quality i{background:#f4e8d8;color:#95692c;width:34px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:19px}
+.se-ref .option-label{font-weight:700;font-size:12px;margin-bottom:12px}
+.se-ref .size-options{display:flex;gap:10px;margin-bottom:25px}
+.se-ref .size-btn{width:46px;height:39px;border:1px solid #e8d9c5;background:#f8f1e6;border-radius:5px;font-size:12px}
+.se-ref .size-btn.selected{background:#231b12;color:#fff;border-color:#231b12}
+.se-ref .colors{display:flex;gap:10px;margin-bottom:28px}
+.se-ref .color-btn{width:26px;height:26px;border-radius:50%;border:2px solid transparent;outline:1px solid transparent}
+.se-ref .color-btn.selected{outline-color:#8b6d49;outline-offset:3px}
+.se-ref .order-btn{width:100%;background:#078e42;color:#fff;border-radius:30px;padding:16px 20px;display:flex;align-items:center;justify-content:center;gap:12px;font-size:13px;font-weight:600}
+.se-ref .order-btn i{font-size:21px}
+.se-ref .order-btn .arrow{margin-left:auto}
+.se-ref .order-notes{display:flex;justify-content:center;gap:14px;font-size:10px;color:#60636a;margin-top:15px}
+.se-ref .order-notes span+span{border-left:1px solid #c9c5bd;padding-left:14px}
+.se-ref .benefits{background:#f5e9d6;display:grid;grid-template-columns:repeat(3,1fr);padding:20px 0;border-radius:5px;margin:38px 0}
+.se-ref .benefit{display:flex;align-items:center;justify-content:center;gap:17px;border-right:1px solid #e5d0b4}
+.se-ref .benefit:last-child{border:0}
+.se-ref .benefit i{font-size:25px;color:#986b33}
+.se-ref .benefit strong{display:block;font-size:11px}
+.se-ref .benefit span{display:block;font-size:9px;margin-top:4px}
+.se-ref .tabs{display:flex;gap:50px;border-bottom:1px solid #e2d7c7;margin-bottom:24px}
+.se-ref .tab{background:none;padding:13px 6px;font-size:14px;color:#555;position:relative}
+.se-ref .tab.active{color:#111;font-weight:700}
+.se-ref .tab.active:after{content:"";position:absolute;bottom:-1px;left:0;width:100%;height:2px;background:#333}
+.se-ref .tab-content{display:none;min-height:170px}
+.se-ref .tab-content.active{display:grid;grid-template-columns:1fr 1fr;gap:45px}
+.se-ref .tab-content h3{font-size:20px;margin-bottom:10px}
+.se-ref .specs{font-size:12px}
+.se-ref .spec-row{display:grid;grid-template-columns:115px 12px 1fr;padding:7px 0}
+.se-ref .love-list{border-left:1px solid #e8dfd3;padding-left:45px}
+.se-ref .love-list p{font-size:12px;margin:15px 0}
+.se-ref .love-list i{color:#a77b38;margin-right:12px}
+.se-ref .recommendations{margin:34px 0 20px}
+.se-ref .recommendations .section-heading h2{font-size:22px}
+.se-ref .recommendations .product-image{height:185px}
+.se-ref .recommendations .product-grid{gap:13px}
+.se-ref footer{background:#100e0b;color:#fff;margin-top:20px}
+.se-ref .footer-main{padding:22px 55px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.se-ref .footer-social{text-align:center}
+.se-ref .footer-social h4{font-family:'DM Sans';color:#e9c679;font-size:12px}
+.se-ref .footer-social p{font-size:9px;margin:8px 0}
+.se-ref .social-icons{display:flex;justify-content:center;gap:18px;color:#f1cb78;font-size:18px}
+.se-ref .footer-whatsapp{background:#078e42;color:#fff;padding:12px 20px;border-radius:30px;font-size:11px}
+.se-ref .footer-bottom{border-top:1px solid #39332b;text-align:center;padding:15px;font-size:9px;color:#c3bcb2}
+.se-ref .footer-bottom a{margin:0 15px}
+.se-ref .detail-footer-banner{height:145px;background:radial-gradient(ellipse at 50%,#382211,#0f0c09 70%);display:flex;align-items:center;justify-content:space-around;color:#e5ba59}
+.se-ref .detail-footer-banner p{font-family:'Cormorant Garamond';font-size:38px;font-style:italic;text-align:center;line-height:.9}
+@media(max-width:1000px){
+  .se-ref header{padding:0 25px}
+  .se-ref .container{padding:0 24px}
+  .se-ref .product-image{height:220px}
+  .se-ref .detail-layout{grid-template-columns:52% 1fr;gap:20px}
+  .se-ref .main-image{height:480px}
+  .se-ref .gallery{grid-template-columns:52px 1fr;gap:9px}
+  .se-ref .thumb{height:65px}
+  .se-ref .hero h1{font-size:58px}
+}
+@media(max-width:750px){
+  .se-ref header{height:78px;padding:0 18px}
+  .se-ref .logo{min-width:100px}
+  .se-ref .logo-symbol{font-size:37px;line-height:29px}
+  .se-ref .logo-name{font-size:17px;line-height:17px}
+  .se-ref .logo-sub{font-size:7px;letter-spacing:2px}
+  .se-ref .logo-tag{font-size:5px}
+  .se-ref header nav{display:none;position:absolute;top:78px;left:0;right:0;background:#17130e;padding:20px;flex-direction:column;gap:15px}
+  .se-ref header nav.open{display:flex}
+  .se-ref .whatsapp-header{margin-left:auto;margin-right:16px;font-size:0;padding:8px 11px}
+  .se-ref .whatsapp-header i{font-size:20px}
+  .se-ref .container{padding:0 15px}
+  .se-ref .hero{height:430px}
+  .se-ref .hero img{object-position:60% center}
+  .se-ref .hero:after{background:linear-gradient(90deg,#000b,#0007 60%,#0001)}
+  .se-ref .hero-content{left:6%}
+  .se-ref .hero h1{font-size:52px}
+  .se-ref .hero p{font-size:12px}
+  .se-ref .hero-features{gap:12px;flex-wrap:wrap;margin-top:25px}
+  .se-ref .hero-feature{font-size:9px}
+  .se-ref .hero-feature i{font-size:19px}
+  .se-ref .categories{gap:8px;justify-content:space-between;overflow-x:auto;padding:20px 10px}
+  .se-ref .category{min-width:59px}
+  .se-ref .category-icon{width:44px;height:44px;font-size:21px}
+  .se-ref .category span{font-size:10px}
+  .se-ref .section-heading{gap:9px}
+  .se-ref .section-heading h2{font-size:23px}
+  .se-ref .sort{font-size:0;gap:0;margin-left:0}
+  .se-ref .sort select{font-size:10px;padding:8px 5px;max-width:105px}
+  .se-ref .product-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .se-ref .product-image{height:245px}
+  .se-ref .product-info{padding:10px}
+  .se-ref .product-title{font-size:10px}
+  .se-ref .product-price{font-size:12px}
+  .se-ref .card-whatsapp{font-size:9px;padding:9px 4px}
+  .se-ref .promo{height:155px}
+  .se-ref .promo h2{font-size:27px}
+  .se-ref .detail-layout{grid-template-columns:1fr}
+  .se-ref .detail-container{padding-top:17px}
+  .se-ref .breadcrumb{flex-wrap:wrap;font-size:10px;gap:8px;margin-bottom:17px}
+  .se-ref .gallery{grid-template-columns:55px 1fr;gap:9px}
+  .se-ref .main-image{height:510px}
+  .se-ref .thumb{height:75px}
+  .se-ref .detail-info{padding-top:12px}
+  .se-ref .detail-info h1{font-size:30px}
+  .se-ref .benefits{margin:25px 0;padding:18px 5px;gap:5px}
+  .se-ref .benefit{gap:7px;flex-direction:column;text-align:center}
+  .se-ref .benefit i{font-size:22px}
+  .se-ref .benefit strong{font-size:10px}
+  .se-ref .benefit span{font-size:8px}
+  .se-ref .tabs{gap:20px}
+  .se-ref .tab{font-size:12px}
+  .se-ref .tab-content.active{grid-template-columns:1fr;gap:15px}
+  .se-ref .love-list{padding-left:0;border:0}
+  .se-ref .recommendations .product-image{height:220px}
+  .se-ref .footer-main{padding:25px 15px;flex-wrap:wrap;justify-content:center}
+  .se-ref .footer-main .logo{display:none}
+  .se-ref .footer-bottom a{margin:0 6px}
+}
+@media(max-width:400px){
+  .se-ref .product-image{height:205px}
+  .se-ref .main-image{height:425px}
+  .se-ref .hero h1{font-size:45px}
+  .se-ref .hero-features{max-width:290px}
+  .se-ref .recommendations .product-image{height:180px}
+}
+
+/* ── local additions ────────────────────────────────────────────────────
+   The reference loads Font Awesome from a CDN and repeats one photo across
+   four thumbnails. We inline SVGs instead (no external dependency, and it
+   still renders in the sandboxed preview) and drop the placeholder
+   thumbnails, since each product currently has a single photograph.
+   --------------------------------------------------------------------- */
+.se-ref .gallery{grid-template-columns:1fr}
+.se-ref .thumbnails{display:none}
+
+.se-ref .wa-icon{width:20px;height:20px;flex:none}
+.se-ref .card-whatsapp .wa-icon{width:17px;height:17px}
+.se-ref .order-btn .wa-icon{width:21px;height:21px}
+.se-ref .footer-whatsapp .wa-icon{width:16px;height:16px;vertical-align:-3px}
+.se-ref .quality svg{width:19px;height:19px;flex:none}
+.se-ref .benefit svg{width:25px;height:25px;color:#986b33;flex:none}
+.se-ref .hero-feature svg{width:25px;height:25px;color:#e4bd61;flex:none}
+.se-ref .love-list svg{width:12px;height:12px;color:#a77b38;margin-right:12px;flex:none}
+.se-ref .zoom-btn svg{width:15px;height:15px}
+.se-ref .social-icons svg{width:18px;height:18px}
+.se-ref .love-list p{display:flex;align-items:flex-start}
+.se-ref .quality i,.se-ref .hero-feature i,.se-ref .benefit i{display:flex;align-items:center;justify-content:center;flex:none}
+.se-ref .hero-content h1{letter-spacing:-1px}
+/* the whole shop page sits on the reference's cream ground */
+.se-ref{min-height:100vh}
+
+/* ── neutralise the site's global element rules ──────────────────────────
+   globals.css styles bare elements (`p`, `section`, `nav a`, `footer`, `.hero`).
+   Those are lower specificity than the .se-ref rules for properties the
+   reference sets, but they still win for anything the reference leaves unset —
+   which showed up as a hero stretched to 94vh. This block cancels the leaks.
+   ----------------------------------------------------------------------- */
+.se-ref p{color:inherit}
+.se-ref section{padding:0}
+.se-ref nav a{text-transform:none;color:#fff;letter-spacing:normal}
+.se-ref footer{padding:0;border-top:0}
+.se-ref .hero{min-height:0;display:block}
+
+/* ── accessibility nudges ────────────────────────────────────────────────
+   The reference was not built to WCAG. Three of its foreground colours miss
+   the 4.5:1 minimum; each is darkened just enough to pass, with no visible
+   change to the design.
+     .rating      #b9842c -> #95661a   (3.07 -> 4.68 on cream)
+     .order-btn   #078e42 -> #06803b   (white on it 4.24 -> 5.05)
+     .category-icon #987039 -> #856030 (3.75 -> 4.75 on #f5ead9)
+   ----------------------------------------------------------------------- */
+.se-ref .rating{color:#95661a}
+.se-ref .order-btn{background:#06803b}
+.se-ref .footer-whatsapp{background:#06803b}
+.se-ref .category-icon{color:#856030}

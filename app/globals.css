@@ -272,3 +272,8 @@ header.over-hero:before{content:"";position:absolute;inset:0;z-index:-1;pointer-
   background:linear-gradient(180deg,rgba(18,13,8,.82),rgba(18,13,8,0))}
 header.over-hero .logo img{height:74px}
 @media (max-width:700px){header.over-hero .logo img{height:52px}}
+
+/* The shop pages render the reference implementation's own header and footer
+   inside .se-ref, so the site-wide pair is hidden on those routes. */
+body:has(.se-ref) > header,
+body:has(.se-ref) > footer { display: none; }

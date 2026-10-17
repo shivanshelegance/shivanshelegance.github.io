@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import JsonLd from "@/components/JsonLd";
-import ProductOptions from "@/components/ProductOptions";
-import ProductTabs from "@/components/ProductTabs";
-import ProductTile from "@/components/ProductTile";
-import ShowcaseCta from "@/components/ShowcaseCta";
-import TrustRow from "@/components/TrustRow";
-import { products, productBySlug, shipping, sizeGuide, wa } from "@/lib/site";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
+import { ShopFooter, ShopHeader } from "@/components/shop/ShopChrome";
+import ShopCard from "@/components/shop/ShopCard";
+import ShopOptions from "@/components/shop/ShopOptions";
+import ShopTabs from "@/components/shop/ShopTabs";
+import { COLOR_HEX } from "@/lib/colors";
+import { products, productBySlug, shipping, sizeGuide } from "@/lib/site";
 import { asset, pageMeta, url } from "@/lib/seo";
 
 type Params = { params: Promise<{ slug: string }> };
@@ -27,6 +28,27 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   );
 }
 
+const QUALITIES = [
+  { t: "Premium\nFabric", d: "M12 2 4 5v6c0 5 3.4 9.3 8 11 4.6-1.7 8-6 8-11V5z" },
+  { t: "Elegant\nDesign", d: "M12 3l2.2 5.5L20 11l-5.8 2.5L12 19l-2.2-5.5L4 11l5.8-2.5z" },
+  { t: "Comfortable\nFit", d: "M3 8h18v12H3zM9 8V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v3M3 13h18" },
+];
+
+const BENEFITS = [
+  {
+    t: "Free Shipping",
+    s: "(Orders above ₹1,999)",
+    d: "M2 6h12v10H2zM14 9h4l4 4v3h-8",
+    c: "M6 18a2 2 0 1 0 0-.01M18 18a2 2 0 1 0 0-.01",
+  },
+  {
+    t: "Easy Returns",
+    s: "(Within 7 days)",
+    d: "M3 12a9 9 0 1 0 3-6.7M3 4v5h5",
+  },
+  { t: "Cash on Delivery", s: "(Available)", d: "M12 2 4 5v6c0 5 3.4 9.3 8 11 4.6-1.7 8-6 8-11V5z" },
+];
+
 export default async function ProductPage({ params }: Params) {
   const { slug } = await params;
   const p = productBySlug(slug);
@@ -40,7 +62,7 @@ export default async function ProductPage({ params }: Params) {
     "@type": "Product",
     name: p.name,
     description: p.description,
-    image: [url(p.image)],
+    image: [url(p.detailImage ?? p.image)],
     sku: `SE-${p.id}`,
     brand: { "@type": "Brand", name: "Shivansh Elegance" },
     category: `Women > ${p.category}`,
@@ -77,137 +99,112 @@ export default async function ProductPage({ params }: Params) {
   };
 
   return (
-    <div className="showcase">
+    <div className="se-ref">
       <JsonLd data={[productSchema, crumbs]} />
+      <ShopHeader active="/women" />
 
-      {/* ── PRODUCT ───────────────────────────────────────────── */}
-      <section className="sc-detail">
-        <div className="sc-wrap">
-          <p className="sc-pmeta" style={{ marginBottom: 18 }}>
-            <Link href="/" style={{ textDecoration: "none" }}>
-              Home
-            </Link>{" "}
-            &nbsp;&gt;&nbsp;
-            <Link href="/women/" style={{ textDecoration: "none" }}>
-              Women
-            </Link>{" "}
-            &nbsp;&gt;&nbsp; {p.category} &nbsp;&gt;&nbsp;{" "}
-            <span style={{ color: "var(--sc-ink)" }}>{p.name}</span>
-          </p>
+      <div className="container detail-container">
+        <div className="breadcrumb">
+          <Link href="/">Home</Link>
+          <span>&rsaquo;</span>
+          <Link href="/women">Women</Link>
+          <span>&rsaquo;</span>
+          <span>{p.category}</span>
+          <span>&rsaquo;</span>
+          <strong>{p.name}</strong>
+        </div>
 
-          <div className="sc-dgrid">
-            <div className="sc-dimg">
-              {p.tag ? <span className="sc-tag">{p.tag}</span> : null}
+        <div className="detail-layout">
+          <div className="gallery">
+            <div className="main-image">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={asset(p.detailImage ?? p.image)} alt={p.name} />
-            </div>
-
-            <div className="sc-dinfo">
-              <div className="sc-pmeta">{p.category}</div>
-              <h1>{p.name}</h1>
-
-              <div className="sc-dprice">
-                <b>{p.price}</b>
-                <span className="sc-pmeta" style={{ marginTop: 0 }}>
-                  Inclusive of all taxes
-                </span>
-              </div>
-
-              {p.rating && p.reviews ? (
-                <div className="sc-drate">
-                  <span className="sc-stars" aria-hidden="true">
-                    ★★★★★
-                  </span>
-                  <span>
-                    {p.rating.toFixed(1)} &nbsp;({p.reviews} Reviews)
-                  </span>
-                </div>
-              ) : null}
-
-              <p className="sc-ddesc">{p.description}</p>
-
-              <div className="sc-qualities">
-                <div className="sc-quality">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden="true">
-                    <circle cx="12" cy="9" r="6" /><circle cx="12" cy="9" r="3" />
-                    <path d="M8.5 14 7 22l5-3 5 3-1.5-8" />
-                  </svg>
-                  <span>
-                    Premium
-                    <br />
-                    Fabric
-                  </span>
-                </div>
-                <div className="sc-quality">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden="true">
-                    <path d="M12 3l2.2 5.5L20 11l-5.8 2.5L12 19l-2.2-5.5L4 11l5.8-2.5z" />
-                  </svg>
-                  <span>
-                    Elegant
-                    <br />
-                    Design
-                  </span>
-                </div>
-                <div className="sc-quality">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden="true">
-                    <path d="M3 8h18v12H3zM9 8V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v3" />
-                    <path d="M3 13h18" />
-                  </svg>
-                  <span>
-                    Comfortable
-                    <br />
-                    Fit
-                  </span>
-                </div>
-              </div>
-
-              <ProductOptions
-                name={p.name}
-                price={p.price}
-                sizes={p.sizes}
-                colors={p.colors}
+              <img
+                src={asset(p.detailImage ?? p.image)}
+                alt={p.name}
+                fetchPriority="high"
               />
             </div>
           </div>
 
-          <TrustRow />
+          <div className="detail-info">
+            <h1>{p.name}</h1>
+            <div className="price-row">
+              <span className="detail-price">{p.price}</span>
+              <span className="best-seller">Best Seller</span>
+            </div>
+            <div className="rating">
+              ★★★★★ <span>({p.rating?.toFixed(1)}) &nbsp; {p.reviews} Reviews</span>
+            </div>
+            <p className="description">{p.description}</p>
 
-          <ProductTabs
-            specs={p.specs}
-            highlights={p.highlights}
-            sizeGuide={sizeGuide}
-            shipping={shipping}
-          />
-        </div>
-      </section>
+            <div className="qualities">
+              {QUALITIES.map((q) => (
+                <div className="quality" key={q.t}>
+                  <i aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <path d={q.d} />
+                    </svg>
+                  </i>
+                  <span>
+                    {q.t.split("\n").map((l, i) => (
+                      <span key={i}>
+                        {i > 0 ? <br /> : null}
+                        {l}
+                      </span>
+                    ))}
+                  </span>
+                </div>
+              ))}
+            </div>
 
-      {/* ── YOU MAY ALSO LIKE ─────────────────────────────────── */}
-      <section>
-        <div className="sc-wrap">
-          <div className="sc-shead">
-            <div className="sc-eye">More to love</div>
-            <h2>You May Also Like</h2>
+            <ShopOptions
+              name={p.name}
+              price={p.price}
+              sizes={p.sizes}
+              colors={p.colors}
+              colorHex={COLOR_HEX}
+            />
           </div>
+        </div>
 
-          <div className="sc-pgrid" style={{ paddingTop: 0 }}>
+        <div className="benefits">
+          {BENEFITS.map((b) => (
+            <div className="benefit" key={b.t}>
+              <i aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4">
+                  <path d={b.d} />
+                  {b.c ? <path d={b.c} /> : null}
+                </svg>
+              </i>
+              <div>
+                <strong>{b.t}</strong>
+                <span>{b.s}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <ShopTabs
+          specs={p.specs}
+          highlights={p.highlights}
+          sizeGuide={sizeGuide}
+          shipping={shipping}
+        />
+
+        <section className="recommendations">
+          <div className="section-heading">
+            <h2>You May Also Like</h2>
+            <div className="heading-line" />
+          </div>
+          <div className="product-grid">
             {related.map((r) => (
-              <ProductTile p={r} key={r.id} />
+              <ShopCard p={r} key={r.id} />
             ))}
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
 
-      <ShowcaseCta
-        headline={
-          <>
-            Want this in another
-            <br />
-            size or colour?
-          </>
-        }
-        lead="Tell us what you're looking for on WhatsApp — we'll share matching pieces, current availability and prices."
-        message={`Hi! I'm interested in the ${p.name}. Please share more details.`}
-      />
+      <ShopFooter detail />
     </div>
   );
 }

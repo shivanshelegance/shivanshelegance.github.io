@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
-import ShowcaseCta from "@/components/ShowcaseCta";
-import TrustRow from "@/components/TrustRow";
 import JsonLd from "@/components/JsonLd";
-import ProductBrowser from "@/components/ProductBrowser";
+import { ShopFooter, ShopHeader } from "@/components/shop/ShopChrome";
+import ShopBrowser from "@/components/shop/ShopBrowser";
 import WhatsAppIcon from "@/components/WhatsAppIcon";
-import { features, products, wa } from "@/lib/site";
+import { products, wa } from "@/lib/site";
 import { asset, pageMeta, url } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta(
@@ -50,108 +49,95 @@ const crumbs = {
   ],
 };
 
-const ICONS: Record<string, React.ReactNode> = {
-  fabric: (
-    <><circle cx="12" cy="9" r="6" /><circle cx="12" cy="9" r="3" /><path d="M8.5 14 7 22l5-3 5 3-1.5-8" /></>
-  ),
-  sparkle: (
-    <><path d="M12 3l2.2 5.5L20 11l-5.8 2.5L12 19l-2.2-5.5L4 11l5.8-2.5z" /><path d="M18 16l.9 2.1L21 19l-2.1.9L18 22l-.9-2.1L15 19l2.1-.9z" /></>
-  ),
-  shield: (
-    <><path d="M12 2 4 5v6c0 5 3.4 9.3 8 11 4.6-1.7 8-6 8-11V5z" /><path d="m8.5 12 2.5 2.5 4.5-5" /></>
-  ),
-  heart: (
-    <><path d="M12 20s-7-4.4-7-9.2A4 4 0 0 1 12 8a4 4 0 0 1 7 2.8C19 15.6 12 20 12 20z" /></>
-  ),
-};
+const HERO_FEATURES = [
+  { t: "Premium\nQuality Fabrics", d: "Soft, breathable\nand long lasting" },
+  { t: "Trendy &\nLatest Designs", d: "Stay stylish\nalways" },
+  { t: "Secure Shopping\nvia WhatsApp", d: "Quick, easy\n& safe" },
+  { t: "Your Style\nOur Priority", d: "Because you\ndeserve the best" },
+];
 
 export default function Women() {
   return (
-    <div className="showcase">
+    <div className="se-ref">
       <JsonLd data={[collectionSchema, crumbs]} />
+      <ShopHeader active="/women" />
 
-      {/* ── HERO ───────────────────────────────────────────────── */}
-      <section className="sc-hero sc-hero-sm">
-        <div
-          className="sc-hero-img"
-          role="img"
-          aria-label="Woman in a rose-pink embroidered anarkali from the Shivansh Elegance women's collection"
-          style={{ backgroundImage: `url(${asset("/images/hero-women.jpg")})` }}
+      {/* ── HERO ─────────────────────────────────────────────── */}
+      <section className="hero">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          id="heroImage"
+          src={asset("/images/royal-pink-suit.jpg")}
+          alt="Royal pink embroidered suit from the Shivansh Elegance women's collection"
         />
-        <div className="sc-hero-in">
-          <div className="sc-hc">
-            <div className="sc-eye">Women&apos;s Collection</div>
-            <h1>
-              <span>Grace in</span>
-              <br />
-              Every Thread
-            </h1>
-            <div className="tri">Elegant suits &nbsp;•&nbsp; Flowy gowns &nbsp;•&nbsp; Graceful sarees</div>
-            <p className="sc-hero-sub">
-              and more &mdash; crafted for your every moment.
-            </p>
-            <a
-              className="sc-btn sc-gold"
-              href={wa("Hi! I'd like to browse the women's collection.", true)}
-              target="_blank"
-              rel="noopener"
-            >
-              <WhatsAppIcon />
-              Explore Women&apos;s Collection &nbsp;→
-            </a>
-            <div className="sub">Click to view our WhatsApp catalog</div>
-          </div>
-        </div>
-        <p className="sc-crumb">
-          <a href="/">Home</a> &nbsp;&gt;&nbsp; <b>Women</b>
-        </p>
-      </section>
-
-      {/* ── WHY CHOOSE ─────────────────────────────────────────── */}
-      <section className="sc-why" style={{ padding: "56px 0" }}>
-        <div className="sc-wrap">
-          <div className="sc-feat">
-            {features.map((f) => (
-              <div className="sc-f" key={f.key}>
-                <div className="sc-ic">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden="true">
-                    {ICONS[f.key]}
+        <div className="hero-content">
+          <div className="eyebrow">WOMEN&apos;S COLLECTION</div>
+          <h1>
+            Grace in
+            <br />
+            Every Thread
+          </h1>
+          <p>
+            Elegant suits, flowy gowns, graceful sarees
+            <br />
+            and more &mdash; crafted for your every moment.
+          </p>
+          <div className="hero-features">
+            {HERO_FEATURES.map((f) => (
+              <div className="hero-feature" key={f.t}>
+                <i aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="m8.5 12.5 2.5 2.5 4.5-5" />
                   </svg>
-                </div>
-                <h4>{f.title}</h4>
-                <p>{f.body}</p>
+                </i>
+                <span>
+                  {f.t.split("\n").map((l, i) => (
+                    <span key={i}>
+                      {i > 0 ? <br /> : null}
+                      {l}
+                    </span>
+                  ))}
+                </span>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── COLLECTION ─────────────────────────────────────────── */}
-      <section>
-        <div className="sc-wrap">
-          <ProductBrowser />
+      {/* ── CATEGORY FILTERS + COLLECTION ────────────────────── */}
+      <ShopBrowser />
 
-          <TrustRow />
-        </div>
+      {/* ── PROMO ────────────────────────────────────────────── */}
+      <section className="container">
+        <section className="promo">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={asset("/images/royal-pink-suit.jpg")}
+            alt="Limited edition styles"
+            loading="lazy"
+          />
+          <div className="promo-content">
+            <h2>
+              Limited Edition
+              <br />
+              Styles
+            </h2>
+            <p>Unique designs. Premium fabrics. Only for you.</p>
+            <a
+              href={wa("Hello Shivansh Elegance! I would like to explore your collection.")}
+              target="_blank"
+              rel="noopener"
+              style={{ display: "inline-flex", alignItems: "center" }}
+            >
+              <WhatsAppIcon className="wa-icon" />
+              Shop Now on WhatsApp
+            </a>
+          </div>
+        </section>
       </section>
 
-      <ShowcaseCta
-        headline={
-          <>
-            Limited Edition
-            <br />
-            Styles
-          </>
-        }
-        lead="Unique designs. Premium fabrics. Only for you."
-        message="Hi! I'd like to see the limited edition styles."
-      />
-
-      <ShowcaseCta
-        headline="Stay Connected"
-        lead="Follow us for the latest styles, offers and more."
-        message="Hi! I'd like to stay updated on new arrivals and offers."
-      />
+      <ShopFooter />
     </div>
   );
 }

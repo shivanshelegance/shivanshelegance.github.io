@@ -7,6 +7,7 @@ import { FULL_URL, ORG, url } from "@/lib/seo";
 import "./fonts.css";
 import "./globals.css";
 import "./showcase.css";
+import "./shop.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(FULL_URL),
@@ -96,6 +97,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en-IN">
+      <head>
+        {/* Client-side font load — deliberately not next/font/google, which
+            fetches at build time and broke the Actions build. */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body>
         <JsonLd data={[orgSchema, websiteSchema]} />
         <Header />
