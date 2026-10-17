@@ -17,16 +17,39 @@ export type Category = {
   id: string;
   name: string;
   image: string;
+  /** Larger shot used as the hero on the detail page. */
+  detailImage?: string;
   blurb: string;
 };
 
 export type Product = {
   id: string;
+  /** URL segment for the detail page, e.g. /women/embroidered-anarkali-set */
+  slug: string;
   name: string;
   category: string;
   price: string;
   image: string;
+  /** Larger shot used as the hero on the detail page. */
+  detailImage?: string;
   tag?: string;
+  /** Lower = newer. Drives the "Newest first" sort. */
+  order: number;
+  bestseller?: boolean;
+  /** Placeholder social proof — replace with real review data. */
+  rating?: number;
+  reviews?: number;
+  description?: string;
+  sizes?: string[];
+  colors?: string[];
+  specs?: {
+    fabric: string;
+    work: string;
+    setIncludes: string;
+    occasion: string;
+    care: string;
+  };
+  highlights?: string[];
 };
 
 export const categories: Category[] = [
@@ -43,22 +66,132 @@ export const categories: Category[] = [
 ];
 
 export const products: Product[] = [
-  { id: "p1", name: "Embroidered Anarkali Set", category: "Anarkalis",
-    price: "₹2,499", image: "/images/p1.jpg", tag: "New" },
-  { id: "p2", name: "Designer Lehenga Choli", category: "Lehengas",
-    price: "₹5,899", image: "/images/p2.jpg", tag: "Bestseller" },
-  { id: "p3", name: "Straight Salwar Suit", category: "Suits & Salwar",
-    price: "₹1,899", image: "/images/p3.jpg" },
-  { id: "p4", name: "Printed Kurta & Pant Set", category: "Anarkalis",
-    price: "₹1,599", image: "/images/p4.jpg", tag: "New" },
-  { id: "p5", name: "Embroidered Lehenga Set", category: "Lehengas",
-    price: "₹4,299", image: "/images/p5.jpg" },
-  { id: "p6", name: "Traditional Silk Saree", category: "Sarees",
-    price: "₹3,199", image: "/images/p6.jpg", tag: "Bestseller" },
-  { id: "p7", name: "Georgette Anarkali Suit", category: "Anarkalis",
-    price: "₹2,199", image: "/images/p7.jpg" },
-  { id: "p8", name: "Designer Salwar Kameez", category: "Suits & Salwar",
-    price: "₹2,099", image: "/images/p8.jpg" },
+  { id: "p1", slug: "royal-pink-embroidered-suit", name: "Royal Pink Embroidered Suit",
+    category: "Suits", price: "\u20b92,499", image: "/images/royal-pink-suit.jpg",
+    detailImage: "/images/royal-pink-suit-detail.jpg", tag: "New",
+    order: 1, bestseller: true, rating: 4.8, reviews: 124,
+    description: "Graceful and elegant, this royal pink suit features intricate embroidery, premium fabric and a timeless design. Perfect for festive occasions, family gatherings or special celebrations.",
+    sizes: ["S", "M", "L", "XL", "XXL"],
+    colors: ["Pink", "Mauve", "Grey", "Charcoal"],
+    specs: { fabric: "Premium Georgette", work: "Embroidery",
+             setIncludes: "Kurta, Pant, Dupatta", occasion: "Festive / Party / Wedding",
+             care: "Dry Clean Only" },
+    highlights: ["Premium quality fabric", "Intricate handcrafted embroidery",
+                 "Lightweight and breathable", "Perfect for special occasions"] },
+
+  { id: "p2", slug: "olive-green-kurti-set", name: "Olive Green Kurti Set",
+    category: "Kurtis", price: "\u20b91,899", image: "/images/olive-green-kurti.jpg", tag: "New",
+    order: 2, rating: 4.6, reviews: 61,
+    description: "An easy olive kurti set in a breathable cotton blend — the kind of everyday piece that still looks dressed up with the right earrings.",
+    sizes: ["S", "M", "L", "XL", "XXL"], colors: ["Olive", "Beige", "Rust"],
+    specs: { fabric: "Cotton Blend", work: "Thread work",
+             setIncludes: "Kurti, Pant", occasion: "Casual / Office",
+             care: "Gentle machine wash" },
+    highlights: ["Soft, breathable cotton blend", "Easy everyday silhouette",
+                 "Colour that holds through washes", "Pockets on the pant"] },
+
+  { id: "p3", slug: "lavender-chiffon-saree", name: "Lavender Chiffon Saree",
+    category: "Sarees", price: "\u20b92,799", image: "/images/lavender-chiffon-saree.jpg",
+    order: 3, rating: 4.7, reviews: 88,
+    description: "A feather-light chiffon saree in soft lavender that drapes beautifully and photographs even better — made for day events and warm evenings.",
+    sizes: ["Free Size"], colors: ["Lavender", "Silver Grey", "Ivory"],
+    specs: { fabric: "Chiffon", work: "Embroidered border",
+             setIncludes: "Saree, Unstitched blouse piece", occasion: "Festive / Wedding",
+             care: "Dry Clean Only" },
+    highlights: ["Lightweight drape", "Embroidered border detail",
+                 "Blouse piece included", "Ready to wear in minutes"] },
+
+  { id: "p4", slug: "maroon-party-gown", name: "Maroon Party Gown",
+    category: "Gowns", price: "\u20b93,499", image: "/images/maroon-party-gown.jpg",
+    order: 4, rating: 4.9, reviews: 152,
+    description: "A floor-length maroon gown with a flattering flare — the one you reach for when the invitation says evening.",
+    sizes: ["XS", "S", "M", "L", "XL"], colors: ["Maroon", "Wine", "Black"],
+    specs: { fabric: "Georgette with crepe lining", work: "Sequin & thread work",
+             setIncludes: "Gown", occasion: "Party / Reception",
+             care: "Dry Clean Only" },
+    highlights: ["Floor-length flare", "Soft crepe lining for comfort",
+                 "Hand-finished sequin work", "Photographs beautifully"] },
+
+  { id: "p5", slug: "sunshine-yellow-suit", name: "Sunshine Yellow Suit",
+    category: "Suits", price: "\u20b92,299", image: "/images/sunshine-yellow-suit.jpg", tag: "New",
+    order: 5, rating: 4.5, reviews: 47,
+    description: "Bright, happy and made for haldi and mehendi — a sunshine yellow suit in a fabric that moves with you all afternoon.",
+    sizes: ["S", "M", "L", "XL", "XXL"], colors: ["Mustard", "Ivory", "Coral"],
+    specs: { fabric: "Chanderi cotton", work: "Mirror & thread work",
+             setIncludes: "Kurta, Pant, Dupatta", occasion: "Haldi / Mehendi / Festive",
+             care: "Dry Clean Only" },
+    highlights: ["Sunlit yellow that suits every skin tone", "Mirror work highlights",
+                 "Breathable for long day events", "Full three-piece set"] },
+
+  { id: "p6", slug: "teal-blue-sharara-set", name: "Teal Blue Sharara Set",
+    category: "Suits", price: "\u20b92,699", image: "/images/teal-blue-sharara.jpg",
+    order: 6, rating: 4.7, reviews: 73,
+    description: "A teal sharara set with a wide, fluid leg — festive without feeling heavy, and easy to dance in.",
+    sizes: ["S", "M", "L", "XL", "XXL"], colors: ["Teal", "Navy", "Ivory"],
+    specs: { fabric: "Georgette", work: "Zari & thread embroidery",
+             setIncludes: "Kurti, Sharara, Dupatta", occasion: "Festive / Wedding",
+             care: "Dry Clean Only" },
+    highlights: ["Fluid wide-leg sharara", "Zari embroidery on the kurti",
+                 "Light enough to dance in", "Three-piece set"] },
+
+  { id: "p7", slug: "floral-lehenga-set", name: "Floral Lehenga Set",
+    category: "Lehengas", price: "\u20b94,499", image: "/images/floral-lehenga-set.jpg", tag: "Popular",
+    order: 7, bestseller: true, rating: 4.8, reviews: 97,
+    description: "Soft florals on a classic lehenga silhouette — occasion wear that photographs beautifully and still moves comfortably.",
+    sizes: ["S", "M", "L", "XL", "XXL"], colors: ["Blush", "Emerald", "Ivory"],
+    specs: { fabric: "Silk blend", work: "Floral thread & sequin work",
+             setIncludes: "Lehenga, Blouse, Dupatta", occasion: "Wedding / Reception",
+             care: "Dry Clean Only" },
+    highlights: ["Hand-finished floral embroidery", "Flattering flared silhouette",
+                 "Coordinated dupatta", "Occasion-ready in one set"] },
+
+  { id: "p8", slug: "elegant-black-suit", name: "Elegant Black Suit",
+    category: "Suits", price: "\u20b92,399", image: "/images/elegant-black-suit.jpg",
+    order: 8, rating: 4.6, reviews: 39,
+    description: "Understated black with fine embroidery — the piece that works for a dinner, a puja and everything in between.",
+    sizes: ["S", "M", "L", "XL", "XXL"], colors: ["Black", "Charcoal", "Ivory"],
+    specs: { fabric: "Georgette", work: "Tone-on-tone embroidery",
+             setIncludes: "Kurta, Pant, Dupatta", occasion: "Evening / Festive",
+             care: "Dry Clean Only" },
+    highlights: ["Tone-on-tone embroidery", "Versatile for evening and puja",
+                 "Comfortable georgette drape", "Three-piece set"] },
+];
+
+export function productBySlug(slug: string): Product | undefined {
+  return products.find((p) => p.slug === slug);
+}
+
+/** The filter chips on the Women's page, derived from the catalogue. */
+export function categoryCounts(): { name: string; count: number }[] {
+  const order = ["Sarees", "Anarkalis", "Suits & Salwar", "Lehengas", "Kurtis"];
+  return order.map((name) => ({
+    name,
+    count: products.filter((p) => p.category === name).length,
+  }));
+}
+
+/** Trust row on the collection and detail pages. */
+export const trust = [
+  { icon: "truck",   title: "Free Shipping",     blurb: "On orders above \u20b91,999" },
+  { icon: "return",  title: "Easy Returns",      blurb: "Within 7 days of delivery" },
+  { icon: "shield",  title: "Cash on Delivery",  blurb: "Available across India" },
+];
+
+/** Shipping & returns copy shown on the detail-page tabs. */
+export const shipping = [
+  { label: "Shipping Information",
+    body: "Free shipping on orders above \u20b91,999. Orders are typically processed in 1\u20132 business days. Delivery times depend on your location." },
+  { label: "Returns & Exchanges",
+    body: "Contact our support team within 7 days of delivery for eligible returns or exchanges." },
+];
+
+/** Size guide table on the detail page — replace with your real measurements. */
+export const sizeGuide = [
+  { size: "S",   bust: '36"', waist: '30"' },
+  { size: "M",   bust: '38"', waist: '32"' },
+  { size: "L",   bust: '40"', waist: '34"' },
+  { size: "XL",  bust: '42"', waist: '36"' },
+  { size: "XXL", bust: '44"', waist: '38"' },
 ];
 
 export const features = [

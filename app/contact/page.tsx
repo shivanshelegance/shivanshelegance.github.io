@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import Cta from "@/components/Cta";
-import { business, wa } from "@/lib/site";
-import WhatsAppIcon from "@/components/WhatsAppIcon";
 import JsonLd from "@/components/JsonLd";
-import PageHeader from "@/components/PageHeader";
+import PageHero from "@/components/PageHero";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
+import { business, wa } from "@/lib/site";
 import { pageMeta, url } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta(
@@ -39,66 +38,86 @@ const crumbs = {
 
 export default function Contact() {
   return (
-    <>
+    <div className="se-ref">
       <JsonLd data={[contactSchema, crumbs]} />
-      <PageHeader
-        eyebrow="Get in touch"
-        title={<>Let&apos;s find your <span className="gold">perfect outfit</span></>}
+      <PageHero
+        eyebrow="GET IN TOUCH"
+        title={
+          <>
+            Let&apos;s find your
+            <br />
+            perfect outfit
+          </>
+        }
         blurb="The fastest way to reach us is WhatsApp — we reply within minutes during business hours."
+        image="/images/detail.jpg"
+        alt="Contact Shivansh Elegance"
       />
-      <section>
-        <div className="wrap">
-          <div className="cgrid">
-            <div className="feat rv">
-              <h3>WhatsApp</h3>
-              <p style={{ margin: "10px 0 18px" }}>
-                Browse the catalog, ask about sizes, prices, delivery and payment.
-              </p>
-              <a
-                className="btn btn-wa"
-                href={wa("Hi Shivansh Elegance! I have a question.")}
-                target="_blank"
-                rel="noopener"
-              >
-                <WhatsAppIcon />
-                Chat on WhatsApp
-              </a>
-            </div>
-            <div className="feat rv">
-              <h3>Ordering</h3>
-              <p style={{ margin: "10px 0 18px" }}>
-                Share the piece you love, confirm your size and address — we handle
-                the rest.
-              </p>
-              <a
-                className="btn btn-wa"
-                href={wa("Hi! I'd like to place an order.")}
-                target="_blank"
-                rel="noopener"
-              >
-                <WhatsAppIcon />
-                Start an order
-              </a>
-            </div>
-            <div className="feat rv">
-              <h3>Hours</h3>
-              <p style={{ marginTop: 10 }}>
-                Monday to Saturday
-                <br />
-                11:00 AM – 8:00 PM IST
-              </p>
-            </div>
-            <div className="feat rv">
-              <h3>Delivery</h3>
-              <p style={{ marginTop: 10 }}>
-                Across India. Dispatch within 24–48 hours, tracking shared on
-                WhatsApp.
-              </p>
-            </div>
+
+      <section className="container content">
+        <div className="panel-grid">
+          <div className="panel">
+            <h3>WhatsApp</h3>
+            <p className="prose" style={{ marginBottom: 18 }}>
+              Browse the catalog, ask about sizes, prices, delivery and payment.
+            </p>
+            <a className="card-whatsapp" href={wa("Hi Shivansh Elegance! I have a question.")} target="_blank" rel="noopener">
+              <WhatsAppIcon className="wa-icon" />
+              Chat on WhatsApp
+            </a>
+          </div>
+          <div className="panel">
+            <h3>Ordering</h3>
+            <p className="prose" style={{ marginBottom: 18 }}>
+              Share the piece you love, confirm your size and address — we handle the rest.
+            </p>
+            <a className="card-whatsapp" href={wa("Hi! I'd like to place an order.")} target="_blank" rel="noopener">
+              <WhatsAppIcon className="wa-icon" />
+              Start an order
+            </a>
+          </div>
+          <div className="panel">
+            <h3>Hours</h3>
+            <p className="prose">
+              Monday to Saturday
+              <br />
+              {business.hours.replace("Monday to Saturday, ", "")}
+            </p>
           </div>
         </div>
+
+        <div className="section-heading" style={{ marginTop: 54 }}>
+          <h2>Good to know</h2>
+          <div className="heading-line" />
+        </div>
+        <div className="split">
+          <div className="panel">
+            <h3>Delivery</h3>
+            <p className="prose">{business.delivery}</p>
+          </div>
+          <div className="panel">
+            <h3>Payments &amp; returns</h3>
+            <p className="prose">{business.payments}</p>
+            <p className="prose" style={{ marginTop: 14 }}>{business.returns}</p>
+          </div>
+        </div>
+
+        <div className="page-cta">
+          <div>
+            <h2>Prefer to just ask?</h2>
+            <p>{business.hours}</p>
+          </div>
+          <a
+            className="footer-whatsapp"
+            href={wa("Hi Shivansh Elegance! I have a question.")}
+            target="_blank"
+            rel="noopener"
+            style={{ padding: "14px 26px", fontSize: 13 }}
+          >
+            <WhatsAppIcon className="wa-icon" /> &nbsp; Chat with us
+          </a>
+        </div>
       </section>
-      <Cta />
-    </>
+    </div>
   );
 }
