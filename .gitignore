@@ -10,3 +10,6 @@ shots/
 
 # local screenshots
 shots/
+
+# typescript incremental build cache
+tsconfig.tsbuildinfo
