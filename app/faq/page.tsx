@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import JsonLd from "@/components/JsonLd";
-import Cta from "@/components/Cta";
-import PageHeader from "@/components/PageHeader";
+import PageHero from "@/components/PageHero";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
 import { faqs, site, wa } from "@/lib/site";
 import { pageMeta } from "@/lib/seo";
-import WhatsAppIcon from "@/components/WhatsAppIcon";
 
 export const metadata: Metadata = pageMeta(
   "FAQ — Shivansh Elegance",
@@ -12,49 +11,60 @@ export const metadata: Metadata = pageMeta(
   "/faq/"
 );
 
-export default function FaqPage() {
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqs.map((f) => ({
-      "@type": "Question",
-      name: f.q,
-      acceptedAnswer: { "@type": "Answer", text: f.a },
-    })),
-  };
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
 
+export default function FaqPage() {
   return (
-    <>
+    <div className="se-ref">
       <JsonLd data={schema} />
-      <PageHeader
-        eyebrow="Questions"
-        title={<>Frequently asked <span className="gold">questions</span></>}
+      <PageHero
+        eyebrow="QUESTIONS"
+        title={
+          <>
+            Frequently asked
+            <br />
+            questions
+          </>
+        }
         blurb="Ordering, delivery, sizing, payments and exchanges — answered. Still stuck? Ask us on WhatsApp and a real person replies."
+        image="/images/showcase-cats.webp"
+        alt="Shivansh Elegance collection"
       />
-      <section>
-        <div className="wrap">
-          <div style={{ maxWidth: 820 }}>
-            {faqs.map((f) => (
-              <div className="feat rv" key={f.q} style={{ marginBottom: 16 }}>
-                <h2 style={{ fontSize: "clamp(19px,2.2vw,24px)" }}>{f.q}</h2>
-                <p style={{ marginTop: 10 }}>{f.a}</p>
-              </div>
-            ))}
+
+      <section className="container content">
+        <div style={{ maxWidth: 860 }}>
+          {faqs.map((f) => (
+            <div className="faq-item" key={f.q}>
+              <h3>{f.q}</h3>
+              <p>{f.a}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="page-cta">
+          <div>
+            <h2>Still have a question?</h2>
+            <p>Message us on WhatsApp and a real person will reply.</p>
           </div>
-          <div style={{ marginTop: 26 }}>
-            <a
-              className="btn btn-wa"
-              href={wa(`Hi ${site.brand}! I have a question about my order.`)}
-              target="_blank"
-              rel="noopener"
-            >
-              <WhatsAppIcon />
-              Ask us on WhatsApp
-            </a>
-          </div>
+          <a
+            className="footer-whatsapp"
+            href={wa(`Hi ${site.brand}! I have a question about my order.`)}
+            target="_blank"
+            rel="noopener"
+            style={{ padding: "14px 26px", fontSize: 13 }}
+          >
+            <WhatsAppIcon className="wa-icon" /> &nbsp; Ask us on WhatsApp
+          </a>
         </div>
       </section>
-      <Cta />
-    </>
+    </div>
   );
 }

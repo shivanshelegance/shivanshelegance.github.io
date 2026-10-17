@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import JsonLd from "@/components/JsonLd";
-import { ShopFooter, ShopHeader } from "@/components/shop/ShopChrome";
 import ShopBrowser from "@/components/shop/ShopBrowser";
 import WhatsAppIcon from "@/components/WhatsAppIcon";
 import { products, wa } from "@/lib/site";
@@ -60,7 +59,6 @@ export default function Women() {
   return (
     <div className="se-ref">
       <JsonLd data={[collectionSchema, crumbs]} />
-      <ShopHeader active="/women" />
 
       {/* ── HERO ─────────────────────────────────────────────── */}
       <section className="hero">
@@ -137,7 +135,6 @@ export default function Women() {
         </section>
       </section>
 
-      <ShopFooter />
     </div>
   );
 }

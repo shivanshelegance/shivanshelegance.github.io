@@ -281,3 +281,88 @@
 .se-ref .order-btn{background:#06803b}
 .se-ref .footer-whatsapp{background:#06803b}
 .se-ref .category-icon{color:#856030}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Page kit for the routes the reference does not define (home, men, kids,
+   about, faq, contact). Built from the reference's own pieces — same hero
+   treatment, same container, same section heading, same button shapes — so
+   every page reads as one site.
+   ───────────────────────────────────────────────────────────────────────── */
+.se-ref .page-hero{height:300px;position:relative;overflow:hidden;background:#24180e}
+.se-ref .page-hero img{width:100%;height:100%;object-position:center 32%}
+.se-ref .page-hero:after{content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(0,0,0,.88) 0%,rgba(0,0,0,.7) 42%,transparent 85%)}
+.se-ref .page-hero .hero-content{max-width:620px}
+.se-ref .page-hero h1{font-size:52px;line-height:.95;font-weight:600;letter-spacing:-1px}
+.se-ref .page-hero p{font-size:14px;line-height:1.7;margin-top:16px;color:#e8e2d8}
+
+.se-ref .content{padding:46px 0 10px}
+.se-ref .prose{font-size:13.5px;line-height:1.95;color:#4b4e53}
+.se-ref .prose p+p{margin-top:16px}
+.se-ref .lede{font-size:15px;line-height:1.85;color:#3c3f44}
+
+.se-ref .split{display:grid;grid-template-columns:1fr 1fr;gap:45px;align-items:center}
+.se-ref .split img{border-radius:7px;height:340px}
+
+.se-ref .panel{background:#fff;border:1px solid #eee5d9;border-radius:7px;padding:26px 28px}
+.se-ref .panel h3{font-size:21px;margin-bottom:10px}
+.se-ref .panel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+
+.se-ref .faq-item{border-bottom:1px solid var(--border);padding:20px 0}
+.se-ref .faq-item:first-of-type{border-top:1px solid var(--border)}
+.se-ref .faq-item h3{font-size:20px;margin-bottom:9px}
+.se-ref .faq-item p{font-size:13px;line-height:1.9;color:#4b4e53}
+
+.se-ref .notice{background:#f8d589;border-radius:7px;padding:16px 20px;
+  font-size:13px;font-weight:700;display:inline-block}
+
+.se-ref .page-cta{margin:44px 0 0;padding:34px 0;border-top:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.se-ref .page-cta h2{font-size:29px;font-weight:600}
+.se-ref .page-cta p{font-size:12.5px;color:#5a5e64;margin-top:6px}
+
+@media (max-width:1000px){
+  .se-ref .split{grid-template-columns:1fr;gap:24px}
+  .se-ref .panel-grid{grid-template-columns:1fr}
+  .se-ref .page-hero{height:260px}
+  .se-ref .page-hero h1{font-size:42px}
+}
+@media (max-width:750px){
+  .se-ref .page-hero{height:250px}
+  .se-ref .page-hero h1{font-size:34px}
+  .se-ref .page-hero p{font-size:12px}
+  .se-ref .content{padding:30px 0 0}
+}
+
+/* shop-by-category cards (home) */
+.se-ref .cat-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.se-ref .cat-card{position:relative;height:210px;border-radius:7px;overflow:hidden;display:block}
+.se-ref .cat-card img{height:100%;transition:transform .4s}
+.se-ref .cat-card:hover img{transform:scale(1.05)}
+.se-ref .cat-card:after{content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 35%,rgba(0,0,0,.68))}
+.se-ref .cat-card span{position:absolute;left:0;right:0;bottom:16px;z-index:1;
+  color:#fff;text-align:center;font-size:13px;font-weight:700;letter-spacing:.02em}
+.se-ref .quote-band{margin:44px 0 0;padding:40px 0;text-align:center;
+  border-top:1px solid var(--border)}
+.se-ref .quote-band p{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;
+  font-size:30px;line-height:1.25;color:#3a2f1e}
+@media (max-width:1000px){
+  .se-ref .cat-grid{grid-template-columns:repeat(3,1fr)}
+  .se-ref .quote-band p{font-size:25px}
+}
+@media (max-width:750px){
+  .se-ref .cat-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .se-ref .cat-card{height:150px}
+  .se-ref .quote-band p{font-size:21px}
+}
+
+/* mobile sticky WhatsApp bar — reference language (was old dark theme) */
+.se-ref .wabar{background:#fff;border-top:1px solid var(--border);padding:10px 15px}
+.se-ref .wabar .btn{width:100%;justify-content:center;background:#06803b;color:#fff;
+  border-radius:30px;padding:13px 20px;font-size:13px;font-weight:700;
+  letter-spacing:.02em;text-transform:none;transform:none;box-shadow:none}
+.se-ref .wabar .btn:hover{background:#078e42;transform:none;box-shadow:none}
+.se-ref .panel-grid.four{grid-template-columns:repeat(4,1fr)}
+@media (max-width:1000px){.se-ref .panel-grid.four{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:750px){.se-ref .panel-grid.four{grid-template-columns:1fr}}

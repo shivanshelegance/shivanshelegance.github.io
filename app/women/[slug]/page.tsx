@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import JsonLd from "@/components/JsonLd";
 import WhatsAppIcon from "@/components/WhatsAppIcon";
-import { ShopFooter, ShopHeader } from "@/components/shop/ShopChrome";
+import { Logo } from "@/components/Chrome";
 import ShopCard from "@/components/shop/ShopCard";
 import ShopOptions from "@/components/shop/ShopOptions";
 import ShopTabs from "@/components/shop/ShopTabs";
@@ -101,7 +101,6 @@ export default async function ProductPage({ params }: Params) {
   return (
     <div className="se-ref">
       <JsonLd data={[productSchema, crumbs]} />
-      <ShopHeader active="/women" />
 
       <div className="container detail-container">
         <div className="breadcrumb">
@@ -204,7 +203,14 @@ export default async function ProductPage({ params }: Params) {
         </section>
       </div>
 
-      <ShopFooter detail />
+      <div className="detail-footer-banner">
+        <p>
+          Elegance in
+          <br />
+          every moment
+        </p>
+        <Logo />
+      </div>
     </div>
   );
 }

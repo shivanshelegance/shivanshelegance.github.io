@@ -1,20 +1,20 @@
 import type { Metadata } from "next";
-import ComingSoon from "@/components/ComingSoon";
+import ComingSoonRef from "@/components/ComingSoonRef";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta(
-  "Children's Collection — Coming Soon | Shivansh Elegance",
-  "Frocks, sets and casuals for the little ones — coming soon. Get notified on WhatsApp.",
+  "Kids' Collection — Coming Soon | Shivansh Elegance",
+  "Festive and everyday ethnic wear for children — coming soon. Get notified on WhatsApp.",
   "/kids/"
 );
 
 export default function Kids() {
   return (
-    <ComingSoon
-      eyebrow="Child's Collection"
-      headline="Little Styles. Big Smiles."
-      blurb="Frocks, sets and casuals for the little ones — coming soon. Ping us and we'll let you know first."
-      image="/images/detail.jpg"
+    <ComingSoonRef
+      eyebrow="KIDS' COLLECTION"
+      title="Little ones, lovely styles."
+      blurb="Soft fabrics and cheerful colours for festive days and everyday wear — coming soon. Leave your number and we'll message you the day we launch."
+      image="/images/hero-women.jpg"
       alt="Children's ethnic wear"
       message="Hi! Please notify me when the kids' collection launches."
     />
