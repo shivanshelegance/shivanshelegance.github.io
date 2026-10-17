@@ -68,11 +68,11 @@ export const categories: Category[] = [
 export const products: Product[] = [
   { id: "p1", slug: "royal-pink-embroidered-suit", name: "Royal Pink Embroidered Suit",
     category: "Suits", price: "\u20b92,499", image: "/images/royal-pink-suit.jpg",
-    detailImage: "/images/royal-pink-suit-detail.jpg", tag: "Bestseller",
+    detailImage: "/images/royal-pink-suit-detail.jpg", tag: "New",
     order: 1, bestseller: true, rating: 4.8, reviews: 124,
     description: "Graceful and elegant, this royal pink suit features intricate embroidery, premium fabric and a timeless design. Perfect for festive occasions, family gatherings or special celebrations.",
     sizes: ["S", "M", "L", "XL", "XXL"],
-    colors: ["Rose Pink", "Dusty Mauve", "Silver Grey", "Charcoal"],
+    colors: ["Pink", "Mauve", "Grey", "Charcoal"],
     specs: { fabric: "Premium Georgette", work: "Embroidery",
              setIncludes: "Kurta, Pant, Dupatta", occasion: "Festive / Party / Wedding",
              care: "Dry Clean Only" },
@@ -179,22 +179,19 @@ export const trust = [
 
 /** Shipping & returns copy shown on the detail-page tabs. */
 export const shipping = [
-  { label: "Shipping",
-    body: "Dispatched within 24\u201348 hours of confirming your order on WhatsApp. Delivery across India typically takes 3\u20137 working days. Free shipping on orders above \u20b91,999, otherwise a flat \u20b99 delivery charge." },
-  { label: "Returns & Exchange",
-    body: "Easy returns within 7 days of delivery for unused, unwashed pieces with tags intact. Share an unboxing video on WhatsApp and we\u2019ll arrange a pickup and an exchange or refund." },
-  { label: "Cash on Delivery",
-    body: "Cash on delivery is available on most pin codes. We\u2019ll confirm availability for your address on WhatsApp before dispatch." },
+  { label: "Shipping Information",
+    body: "Free shipping on orders above \u20b91,999. Orders are typically processed in 1\u20132 business days. Delivery times depend on your location." },
+  { label: "Returns & Exchanges",
+    body: "Contact our support team within 7 days of delivery for eligible returns or exchanges." },
 ];
 
 /** Size guide table on the detail page — replace with your real measurements. */
 export const sizeGuide = [
-  { size: "XS", bust: "32\u201333", waist: "26\u201327", hip: "35\u201336" },
-  { size: "S",  bust: "34\u201335", waist: "28\u201329", hip: "37\u201338" },
-  { size: "M",  bust: "36\u201337", waist: "30\u201331", hip: "39\u201340" },
-  { size: "L",  bust: "38\u201340", waist: "32\u201334", hip: "41\u201343" },
-  { size: "XL", bust: "41\u201343", waist: "35\u201337", hip: "44\u201346" },
-  { size: "XXL",bust: "44\u201346", waist: "38\u201340", hip: "47\u201349" },
+  { size: "S",   bust: '36"', waist: '30"' },
+  { size: "M",   bust: '38"', waist: '32"' },
+  { size: "L",   bust: '40"', waist: '34"' },
+  { size: "XL",  bust: '42"', waist: '36"' },
+  { size: "XXL", bust: '44"', waist: '38"' },
 ];
 
 export const features = [

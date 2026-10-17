@@ -32,13 +32,8 @@ export default async function ProductPage({ params }: Params) {
   const p = productBySlug(slug);
   if (!p) notFound();
 
-  const related = products
-    .filter((o) => o.id !== p.id)
-    .sort((a, b) => {
-      const sameCat = Number(b.category === p.category) - Number(a.category === p.category);
-      return sameCat || a.order - b.order;
-    })
-    .slice(0, 4);
+  // The reference simply shows the next four pieces.
+  const related = products.filter((o) => o.id !== p.id).slice(0, 4);
 
   const productSchema = {
     "@context": "https://schema.org",
@@ -130,6 +125,41 @@ export default async function ProductPage({ params }: Params) {
               ) : null}
 
               <p className="sc-ddesc">{p.description}</p>
+
+              <div className="sc-qualities">
+                <div className="sc-quality">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden="true">
+                    <circle cx="12" cy="9" r="6" /><circle cx="12" cy="9" r="3" />
+                    <path d="M8.5 14 7 22l5-3 5 3-1.5-8" />
+                  </svg>
+                  <span>
+                    Premium
+                    <br />
+                    Fabric
+                  </span>
+                </div>
+                <div className="sc-quality">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden="true">
+                    <path d="M12 3l2.2 5.5L20 11l-5.8 2.5L12 19l-2.2-5.5L4 11l5.8-2.5z" />
+                  </svg>
+                  <span>
+                    Elegant
+                    <br />
+                    Design
+                  </span>
+                </div>
+                <div className="sc-quality">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden="true">
+                    <path d="M3 8h18v12H3zM9 8V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v3" />
+                    <path d="M3 13h18" />
+                  </svg>
+                  <span>
+                    Comfortable
+                    <br />
+                    Fit
+                  </span>
+                </div>
+              </div>
 
               <ProductOptions
                 name={p.name}

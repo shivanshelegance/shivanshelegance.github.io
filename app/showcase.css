@@ -396,3 +396,12 @@
 .sc-hero-sub{margin-top:18px;font-size:16px;line-height:1.6;color:#D8CCB8;max-width:520px}
 .sc-detail .sc-trust{margin-top:36px}
 @media (max-width:700px){ .sc-hero-sub{font-size:15px;margin-top:12px} }
+.sc-qualities{display:flex;gap:12px;margin-top:24px;padding:16px 0;
+  border-top:1px solid rgba(27,19,12,.12);border-bottom:1px solid rgba(27,19,12,.12)}
+.sc-quality{display:flex;align-items:center;gap:10px;flex:1;font-size:11px;line-height:1.5;
+  letter-spacing:.04em;color:#5B4636}
+.sc-quality svg{width:24px;height:24px;flex:none;stroke:#7D5C3E}
+@media (max-width:700px){
+  .sc-qualities{flex-wrap:wrap;gap:10px}
+  .sc-quality{flex:0 0 calc(50% - 6px)}
+}

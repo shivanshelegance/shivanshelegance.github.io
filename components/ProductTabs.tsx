@@ -20,7 +20,7 @@ export default function ProductTabs({
 }: {
   specs?: Specs;
   highlights?: string[];
-  sizeGuide: { size: string; bust: string; waist: string; hip: string }[];
+  sizeGuide: { size: string; bust: string; waist: string }[];
   shipping: { label: string; body: string }[];
 }) {
   const [tab, setTab] = useState<(typeof TABS)[number]>("Product Details");
@@ -89,9 +89,8 @@ export default function ProductTabs({
               <thead>
                 <tr>
                   <th scope="col">Size</th>
-                  <th scope="col">Bust (in)</th>
-                  <th scope="col">Waist (in)</th>
-                  <th scope="col">Hip (in)</th>
+                  <th scope="col">Bust</th>
+                  <th scope="col">Waist</th>
                 </tr>
               </thead>
               <tbody>
@@ -100,14 +99,13 @@ export default function ProductTabs({
                     <td>{r.size}</td>
                     <td>{r.bust}</td>
                     <td>{r.waist}</td>
-                    <td>{r.hip}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
             <p style={{ marginTop: 14, fontSize: 14 }}>
-              Between sizes or want it tailored? Send your measurements on WhatsApp and
-              we&apos;ll confirm the right fit before dispatch.
+              Measurements are in inches. For the best fit, compare your measurements with
+              the size chart before placing an order.
             </p>
           </>
         ) : null}
