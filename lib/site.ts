@@ -2,7 +2,7 @@ export const site = {
   brand: "Shivansh Elegance",
   tagline: "Wear Elegance · Live Stylish",
   /** Digits only, country code first. Replace before going live. */
-  whatsapp: "919999999999",
+  whatsapp: "919265526609",
   /** Optional WhatsApp Business catalog short link, e.g. https://wa.me/c/xxxxx */
   catalogUrl: null as string | null,
 };
