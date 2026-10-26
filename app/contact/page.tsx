@@ -1,28 +1,27 @@
 import type { Metadata } from "next";
 import JsonLd from "@/components/JsonLd";
-import PageHero from "@/components/PageHero";
 import WhatsAppIcon from "@/components/WhatsAppIcon";
-import { business, wa } from "@/lib/site";
+import { GREETING, business, site, wa } from "@/lib/site";
 import { pageMeta, url } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta(
-  "Contact — Order Shivansh Elegance on WhatsApp",
-  "Contact Shivansh Elegance on WhatsApp for orders, sizing help and delivery questions. Monday to Saturday, 11:00 AM – 8:00 PM IST.",
+  "Contact — Shivansh Elegance",
+  "Order and ask questions on WhatsApp. Sizing help, fabric queries, delivery across India and exchanges — a real person replies.",
   "/contact/"
 );
 
-const contactSchema = {
+const schema = {
   "@context": "https://schema.org",
   "@type": "ContactPage",
+  name: "Contact Shivansh Elegance",
   url: url("/contact/"),
   mainEntity: {
     "@type": "Organization",
-    name: "Shivansh Elegance",
+    name: site.brand,
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "customer support",
-      availableLanguage: ["English", "Hindi"],
-      hoursAvailable: business.hours,
+      availableLanguage: ["English", "Hindi", "Gujarati"],
     },
   },
 };
@@ -36,86 +35,95 @@ const crumbs = {
   ],
 };
 
-export default function Contact() {
+const WAYS = [
+  { label: "Order on WhatsApp", body: "Browse the catalog, confirm your size and address — all in one chat." },
+  { label: "Sizing help", body: "Send your measurements and we'll confirm the right size before dispatch." },
+  { label: "Fabric & care", body: "Ask about the fabric, the work and how to care for it before you buy." },
+];
+
+export default function ContactPage() {
   return (
-    <div className="se-ref">
-      <JsonLd data={[contactSchema, crumbs]} />
-      <PageHero
-        eyebrow="GET IN TOUCH"
-        title={
-          <>
-            Let&apos;s find your
-            <br />
-            perfect outfit
-          </>
-        }
-        blurb="The fastest way to reach us is WhatsApp — we reply within minutes during business hours."
-        image="/images/detail.jpg"
-        alt="Contact Shivansh Elegance"
-      />
+    <div className="showcase">
+      <JsonLd data={[schema, crumbs]} />
 
-      <section className="container content">
-        <div className="panel-grid">
-          <div className="panel">
-            <h3>WhatsApp</h3>
-            <p className="prose" style={{ marginBottom: 18 }}>
-              Browse the catalog, ask about sizes, prices, delivery and payment.
-            </p>
-            <a className="card-whatsapp" href={wa("Hi Shivansh Elegance! I have a question.")} target="_blank" rel="noopener">
-              <WhatsAppIcon className="wa-icon" />
-              Chat on WhatsApp
-            </a>
-          </div>
-          <div className="panel">
-            <h3>Ordering</h3>
-            <p className="prose" style={{ marginBottom: 18 }}>
-              Share the piece you love, confirm your size and address — we handle the rest.
-            </p>
-            <a className="card-whatsapp" href={wa("Hi! I'd like to place an order.")} target="_blank" rel="noopener">
-              <WhatsAppIcon className="wa-icon" />
-              Start an order
-            </a>
-          </div>
-          <div className="panel">
-            <h3>Hours</h3>
-            <p className="prose">
-              Monday to Saturday
+      <section className="sc-hero sc-hero-sm">
+        <div
+          className="sc-hero-img"
+          role="img"
+          aria-label="Shivansh Elegance collection"
+          style={{ backgroundImage: "url(/images/products/three-piece-02.jpg)" }}
+        />
+        <div className="sc-hero-in">
+          <div className="sc-hc">
+            <div className="sc-eye">Contact</div>
+            <h1>
+              <span>Let&apos;s find your</span>
               <br />
-              {business.hours.replace("Monday to Saturday, ", "")}
+              perfect outfit
+            </h1>
+            <p className="sc-hero-sub">
+              The quickest way to reach us is WhatsApp. Send a message and a real
+              person will help you pick, size and order.
             </p>
+            <a className="sc-btn sc-gold" href={wa(GREETING)} target="_blank" rel="noopener">
+              <WhatsAppIcon />
+              Start a conversation
+            </a>
+            <div className="sub">We usually reply within the hour.</div>
           </div>
+        </div>
+      </section>
+
+      <div className="sc-wrap">
+        <div className="sc-bar2">
+          <h1 className="sc-collhead">How to reach us</h1>
+        </div>
+        <div className="sc-trust">
+          {WAYS.map((w) => (
+            <div className="sc-trust-i" key={w.label}>
+              <div>
+                <b>{w.label}</b>
+                <span>{w.body}</span>
+              </div>
+            </div>
+          ))}
         </div>
 
-        <div className="section-heading" style={{ marginTop: 54 }}>
-          <h2>Good to know</h2>
-          <div className="heading-line" />
+        <div className="sc-bar2" style={{ marginTop: 48 }}>
+          <h2 className="sc-collhead">Good to know</h2>
         </div>
-        <div className="split">
-          <div className="panel">
-            <h3>Delivery</h3>
-            <p className="prose">{business.delivery}</p>
-          </div>
-          <div className="panel">
-            <h3>Payments &amp; returns</h3>
-            <p className="prose">{business.payments}</p>
-            <p className="prose" style={{ marginTop: 14 }}>{business.returns}</p>
-          </div>
-        </div>
+        <dl className="sc-spec">
+          <div><dt>Hours</dt><dd style={{ fontSize: 15, fontWeight: 400 }}>{business.hours}</dd></div>
+          <div><dt>Delivery</dt><dd style={{ fontSize: 15, fontWeight: 400 }}>{business.delivery}</dd></div>
+          <div><dt>Payments</dt><dd style={{ fontSize: 15, fontWeight: 400 }}>{business.payments}</dd></div>
+          <div><dt>Returns</dt><dd style={{ fontSize: 15, fontWeight: 400 }}>{business.returns}</dd></div>
+        </dl>
+      </div>
 
-        <div className="page-cta">
-          <div>
-            <h2>Prefer to just ask?</h2>
-            <p>{business.hours}</p>
+      <section className="sc-cta" style={{ marginTop: 56 }}>
+        <div className="sc-wrap">
+          <div className="sc-cta-grid">
+            <div className="lg">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/logo-gold.svg" alt={site.brand} />
+            </div>
+            <div>
+              <h2>Send us a message</h2>
+              <p className="lead">
+                One tap opens WhatsApp with a message ready to go — just hit send.
+              </p>
+            </div>
+            <div>
+              <a className="sc-btn sc-wa" href={wa(GREETING)} target="_blank" rel="noopener">
+                <WhatsAppIcon />
+                Chat with us
+              </a>
+              <div className="sc-proof">
+                <span>Fast replies</span>
+                <span>Easy ordering</span>
+              </div>
+            </div>
           </div>
-          <a
-            className="footer-whatsapp"
-            href={wa("Hi Shivansh Elegance! I have a question.")}
-            target="_blank"
-            rel="noopener"
-            style={{ padding: "14px 26px", fontSize: 13 }}
-          >
-            <WhatsAppIcon className="wa-icon" /> &nbsp; Chat with us
-          </a>
         </div>
       </section>
     </div>

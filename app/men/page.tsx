@@ -1,22 +1,22 @@
 import type { Metadata } from "next";
-import ComingSoonRef from "@/components/ComingSoonRef";
+import ComingSoon from "@/components/ComingSoon";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta(
   "Men's Collection — Coming Soon | Shivansh Elegance",
-  "Kurtas, shirts, ethnic wear and casuals for men — coming soon. Get notified on WhatsApp.",
+  "The Shivansh Elegance men's range — kurtas, shirts and ethnic wear — is in production. Message us on WhatsApp for first look.",
   "/men/"
 );
 
-export default function Men() {
+export default function MenPage() {
   return (
-    <ComingSoonRef
-      eyebrow="MEN'S COLLECTION"
-      title="Classic. Confident. You."
-      blurb="Kurtas, shirts, ethnic wear and casuals for men are on the way. Leave your number and we'll message you the day we launch."
-      image="/images/men.jpg"
-      alt="Men's ethnic wear"
-      message="Hi! Please notify me when the men's collection launches."
+    <ComingSoon
+      title="Men"
+      eyebrow="Coming Soon"
+      blurb="Kurtas, shirts and effortless ethnic wear — the men's range is in production."
+      image="/images/products/coord-set-07.jpg"
+      alt="Shivansh Elegance men's collection preview"
+      notifyText="Hi Shivansh Elegance! Please notify me when the Men's collection launches."
     />
   );
 }
