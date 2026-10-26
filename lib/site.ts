@@ -58,7 +58,7 @@ export type Product = {
    ───────────────────────────────────────────────────────────────────────
    Prices supplied by the owner (Oct 2026):
      Bandhani Dress    ₹800   ·  Coord Set  ₹700
-     Three Piece Set   ₹1,000 / ₹650 / ₹500 (01 / 02 / 03)
+     Three Piece Set   ₹600 / ₹650 / ₹1,000 (01 / 02 / 03)
    Edit `price` here and `name` to rename — the rest of the page is
    generated from this block.
    ═══════════════════════════════════════════════════════════════════════ */
@@ -74,9 +74,9 @@ const CATALOGUE: {
   { slug: "bandhani-dress-06", name: "Bandhani Dress 06", price: 800, family: "bandhani" },
   { slug: "bandhani-dress-07", name: "Bandhani Dress 07", price: 800, family: "bandhani" },
 
-  { slug: "three-piece-01", name: "Three Piece Set 01", price: 1000, family: "threepiece", tag: "New" },
+  { slug: "three-piece-01", name: "Three Piece Set 01", price: 600, family: "threepiece", tag: "New" },
   { slug: "three-piece-02", name: "Three Piece Set 02", price: 650, family: "threepiece" },
-  { slug: "three-piece-03", name: "Three Piece Set 03", price: 500, family: "threepiece", tag: "Popular" },
+  { slug: "three-piece-03", name: "Three Piece Set 03", price: 1000, family: "threepiece", tag: "Popular" },
 
   { slug: "coord-set-01", name: "Coord Set 01", price: 700, family: "coord", tag: "New" },
   { slug: "coord-set-02", name: "Coord Set 02", price: 700, family: "coord" },
@@ -199,7 +199,7 @@ export const GREETING = "Hi! I would like to see the Shivansh Elegance catalog."
 
 /** Business facts used by the FAQ and structured data. REPLACE with your real policy. */
 export const business = {
-  priceRange: "₹500 – ₹1,000",
+  priceRange: "₹600 – ₹1,000",
   delivery: "Pan-India, dispatched in 24–48 hours, typically delivered in 3–7 business days.",
   payments: "UPI, debit and credit cards, and net banking. A payment link is shared on WhatsApp.",
   returns: "7-day exchange on unworn items with tags intact. Message us on WhatsApp to start one.",
