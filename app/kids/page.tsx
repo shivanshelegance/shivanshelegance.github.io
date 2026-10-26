@@ -1,22 +1,22 @@
 import type { Metadata } from "next";
-import ComingSoonRef from "@/components/ComingSoonRef";
+import ComingSoon from "@/components/ComingSoon";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta(
-  "Kids' Collection — Coming Soon | Shivansh Elegance",
-  "Festive and everyday ethnic wear for children — coming soon. Get notified on WhatsApp.",
+  "Child's Collection — Coming Soon | Shivansh Elegance",
+  "The Shivansh Elegance child's range — ethnic wear, frocks and sets — is in production. Message us on WhatsApp for first look.",
   "/kids/"
 );
 
-export default function Kids() {
+export default function KidsPage() {
   return (
-    <ComingSoonRef
-      eyebrow="KIDS' COLLECTION"
-      title="Little ones, lovely styles."
-      blurb="Soft fabrics and cheerful colours for festive days and everyday wear — coming soon. Leave your number and we'll message you the day we launch."
-      image="/images/hero-women.jpg"
-      alt="Children's ethnic wear"
-      message="Hi! Please notify me when the kids' collection launches."
+    <ComingSoon
+      title="Child"
+      eyebrow="Coming Soon"
+      blurb="Ethnic wear, frocks and playful sets — the child's range is in production."
+      image="/images/products/bandhani-dress-02.jpg"
+      alt="Shivansh Elegance child's collection preview"
+      notifyText="Hi Shivansh Elegance! Please notify me when the Child's collection launches."
     />
   );
 }

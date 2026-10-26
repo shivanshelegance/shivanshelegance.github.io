@@ -1,22 +1,21 @@
 import type { Metadata } from "next";
 import JsonLd from "@/components/JsonLd";
-import PageHero from "@/components/PageHero";
-import ShopCard from "@/components/shop/ShopCard";
 import WhatsAppIcon from "@/components/WhatsAppIcon";
-import { GREETING, features, products, wa } from "@/lib/site";
-import { FULL_URL, asset, pageMeta, url } from "@/lib/seo";
+import { GREETING, features, site, wa } from "@/lib/site";
+import { pageMeta, url } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta(
   "Our Story — Shivansh Elegance",
-  "Shivansh Elegance is an Indian women's ethnic wear brand built on handpicked fabrics, traditional craftsmanship and timeless design, sold over WhatsApp.",
+  "Shivansh Elegance is a women's ethnic wear label built on handpicked fabrics, timeless design and a simple way to buy: a WhatsApp conversation.",
   "/about/"
 );
 
-const aboutSchema = {
+const schema = {
   "@context": "https://schema.org",
   "@type": "AboutPage",
+  name: "About Shivansh Elegance",
   url: url("/about/"),
-  mainEntity: { "@id": `${FULL_URL}/#organization` },
+  mainEntity: { "@type": "Organization", name: site.brand, slogan: site.tagline },
 };
 
 const crumbs = {
@@ -29,102 +28,101 @@ const crumbs = {
 };
 
 const PILLARS = [
-  { t: "Traditional Craftsmanship", s: "Techniques passed down, finished by hand." },
-  { t: "Modern Trends", s: "Silhouettes that feel current, never dated." },
-  { t: "Made for Every Occasion", s: "From everyday comfort to the big day." },
+  {
+    title: "Handpicked, not bulk-bought",
+    body: "Every piece is chosen one at a time for fabric, finish and how it actually falls on the body.",
+  },
+  {
+    title: "Honest photographs",
+    body: "What you see is the real garment in real light — no stock images, no surprises on delivery.",
+  },
+  {
+    title: "A conversation, not a checkout",
+    body: "Ask about fabric, sizing or styling and a real person answers. Then order in the same chat.",
+  },
 ];
 
-export default function About() {
+export default function AboutPage() {
   return (
-    <div className="se-ref">
-      <JsonLd data={[aboutSchema, crumbs]} />
-      <PageHero
-        eyebrow="OUR STORY"
-        title={
-          <>
-            More Than Just Clothes,
-            <br />
-            It&apos;s a Feeling
-          </>
-        }
-        blurb="Handcrafted styles, premium fabrics and timeless designs — chosen by hand, checked by hand, packed with care."
-        image="/images/hero-about.jpg"
-        alt="Shivansh Elegance atelier"
-      />
+    <div className="showcase">
+      <JsonLd data={[schema, crumbs]} />
 
-      <section className="container content">
-        <div className="split">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={asset("/images/hero-about.jpg")} alt="Shivansh Elegance atelier" loading="lazy" />
-          <div>
-            <div className="section-heading">
-              <h2>What we make</h2>
-              <div className="heading-line" />
-            </div>
-            <div className="prose">
-              <p>
-                At Shivansh Elegance, we bring you handcrafted styles, premium fabrics
-                and timeless designs that make you feel confident, elegant and beautiful
-                — every single day.
-              </p>
-              <p>
-                Every piece is chosen by hand, checked by hand, and packed with care.
-                Style is not just what you wear — it&apos;s how you live.
-              </p>
-            </div>
+      <section className="sc-hero sc-hero-sm">
+        <div
+          className="sc-hero-img"
+          role="img"
+          aria-label="Shivansh Elegance collection"
+          style={{ backgroundImage: "url(/images/products/bandhani-dress-03.jpg)" }}
+        />
+        <div className="sc-hero-in">
+          <div className="sc-hc">
+            <div className="sc-eye">Our Story</div>
+            <h1>
+              <span>More Than Just</span>
+              <br />
+              Clothes, It&apos;s a Feeling
+            </h1>
+            <p className="sc-hero-sub">
+              Shivansh Elegance began with a simple belief: getting dressed should feel
+              good, and buying something beautiful shouldn&apos;t be complicated.
+            </p>
           </div>
         </div>
+      </section>
 
-        <div className="section-heading" style={{ marginTop: 54 }}>
-          <h2>What we stand for</h2>
-          <div className="heading-line" />
+      <div className="sc-wrap">
+        <div className="sc-bar2">
+          <h1 className="sc-collhead">What we stand for</h1>
         </div>
-        <div className="panel-grid">
+        <div className="sc-trust">
           {PILLARS.map((p) => (
-            <div className="panel" key={p.t}>
-              <h3>{p.t}</h3>
-              <p className="prose">{p.s}</p>
+            <div className="sc-trust-i" key={p.title}>
+              <div>
+                <b>{p.title}</b>
+                <span>{p.body}</span>
+              </div>
             </div>
           ))}
         </div>
 
-        <div className="section-heading" style={{ marginTop: 54 }}>
-          <h2>Why choose us</h2>
-          <div className="heading-line" />
+        <div className="sc-bar2" style={{ marginTop: 48 }}>
+          <h2 className="sc-collhead">Why customers come back</h2>
         </div>
-        <div className="panel-grid">
+        <div className="sc-feat">
           {features.map((f) => (
-            <div className="panel" key={f.key}>
-              <h3>{f.title}</h3>
-              <p className="prose">{f.body}</p>
+            <div className="sc-f" key={f.key} style={{ textAlign: "left" }}>
+              <h4>{f.title}</h4>
+              <p>{f.body}</p>
             </div>
           ))}
         </div>
+      </div>
 
-        <div className="section-heading" style={{ marginTop: 54 }}>
-          <h2>Popular right now</h2>
-          <div className="heading-line" />
-        </div>
-        <div className="product-grid">
-          {products.slice(0, 4).map((p) => (
-            <ShopCard p={p} key={p.id} />
-          ))}
-        </div>
-
-        <div className="page-cta">
-          <div>
-            <h2>Say hello</h2>
-            <p>Browse the catalog, ask about sizes — we reply fast.</p>
+      <section className="sc-cta" style={{ marginTop: 56 }}>
+        <div className="sc-wrap">
+          <div className="sc-cta-grid">
+            <div className="lg">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/logo-gold.svg" alt={site.brand} />
+            </div>
+            <div>
+              <h2>Come say hello</h2>
+              <p className="lead">
+                Tell us what you&apos;re looking for and we&apos;ll send you pieces that
+                suit you — no pressure, no hard sell.
+              </p>
+            </div>
+            <div>
+              <a className="sc-btn sc-wa" href={wa(GREETING)} target="_blank" rel="noopener">
+                <WhatsAppIcon />
+                Chat with us
+              </a>
+              <div className="sc-proof">
+                <span>Fast replies</span>
+                <span>Real people</span>
+              </div>
+            </div>
           </div>
-          <a
-            className="footer-whatsapp"
-            href={wa(GREETING)}
-            target="_blank"
-            rel="noopener"
-            style={{ padding: "14px 26px", fontSize: 13 }}
-          >
-            <WhatsAppIcon className="wa-icon" /> &nbsp; Chat with us
-          </a>
         </div>
       </section>
     </div>

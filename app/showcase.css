@@ -17,6 +17,15 @@
   background:var(--sc-cream); color:var(--sc-ink); font-weight:300;
 }
 .showcase img{display:block}
+
+/* ── neutralise globals.css element leaks ──────────────────────────────
+   globals.css styles bare elements for the older page shell:
+     section{padding:clamp(78px,9vw,132px) 0}   p{color:var(--muted)}
+   Those inflated every showcase section by ~230px. :where() adds no
+   specificity, so this still beats a bare `section{}` rule but loses to any
+   .sc-* rule that sets its own padding — which is what we want. */
+.showcase :where(section){padding:0}
+.showcase :where(p){color:inherit}
 .sc-wrap{max-width:1136px;margin:0 auto;padding:0 24px}
 
 .showcase .sc-btn{display:inline-flex;align-items:center;gap:10px;border-radius:999px;
@@ -405,3 +414,43 @@
   .sc-qualities{flex-wrap:wrap;gap:10px}
   .sc-quality{flex:0 0 calc(50% - 6px)}
 }
+
+/* ══════════════════════════════════════════════════════════════════════
+   REAL PRODUCT PHOTOS
+   The sc-* geometry was ported from artboards whose background-size /
+   background-position cropped one specific mockup photo. Our real stock is
+   portrait 4:5 and needs plain `cover` with a top-biased anchor, or the
+   garment falls outside the frame.
+   ══════════════════════════════════════════════════════════════════════ */
+.sc-cat .ph.prod{background-size:cover;background-position:center 10%}
+.sc-pol .bg{background-size:cover;background-position:center 8%}
+.sc-hero-img{background-size:cover;background-position:center 12%}
+.sc-fc-ph{background-size:cover;background-position:center 18%}
+/* product grid + detail: real photos are 4:5, cards are square/portrait */
+.sc-pimg img,.sc-dimg img{object-position:center 12%}
+
+/* ── FAQ accordion ───────────────────────────────────────────────── */
+.sc-faq{border-top:1px solid rgba(27,19,12,.14)}
+.sc-faq-i{border-bottom:1px solid rgba(27,19,12,.14)}
+.sc-faq-i summary{
+  list-style:none;cursor:pointer;padding:20px 34px 20px 0;position:relative;
+  font:500 clamp(17px,1.6vw,21px)/1.35 var(--serif);color:var(--sc-ink)}
+.sc-faq-i summary::-webkit-details-marker{display:none}
+.sc-faq-i summary:after{
+  content:"";position:absolute;right:6px;top:50%;width:9px;height:9px;
+  border-right:1.5px solid #7D5C3E;border-bottom:1.5px solid #7D5C3E;
+  transform:translateY(-70%) rotate(45deg);transition:transform .2s}
+.sc-faq-i[open] summary:after{transform:translateY(-30%) rotate(225deg)}
+.sc-faq-i p{padding:0 40px 22px 0;font-size:15px;line-height:1.8;color:#5B4636;max-width:760px}
+@media (max-width:700px){
+  .sc-faq-i summary{padding:16px 30px 16px 0;font-size:17px}
+  .sc-faq-i p{padding:0 24px 18px 0;font-size:14.5px}
+}
+/* trust rows used as 2-line panels (about / contact) stack their text */
+.sc-trust-i > div{min-width:0}
+
+/* The header is position:absolute so it can float over the hero. Pages that
+   have no hero (the product detail page) would otherwise have their first
+   content sit underneath it — give those a clearance equal to the header. */
+.showcase:not(:has(.sc-hero)){padding-top:104px}
+@media (max-width:700px){.showcase:not(:has(.sc-hero)){padding-top:88px}}
