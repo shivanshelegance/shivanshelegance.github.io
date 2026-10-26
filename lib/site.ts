@@ -56,34 +56,36 @@ export type Product = {
    REAL PRODUCT CATALOGUE
    Photos are your real stock, in public/images/products/.
    ───────────────────────────────────────────────────────────────────────
-   THE PRICES BELOW ARE PLACEHOLDERS. Replace `price` with your real
-   figure and `name` with the name you want customers to see. Nothing
-   else needs to change — the rest of the page is generated from this.
+   Prices supplied by the owner (Oct 2026):
+     Bandhani Dress    ₹800   ·  Coord Set  ₹700
+     Three Piece Set   ₹1,000 / ₹650 / ₹500 (01 / 02 / 03)
+   Edit `price` here and `name` to rename — the rest of the page is
+   generated from this block.
    ═══════════════════════════════════════════════════════════════════════ */
 const CATALOGUE: {
   slug: string; name: string; price: number;
   family: "bandhani" | "threepiece" | "coord"; tag?: string;
 }[] = [
-  { slug: "bandhani-dress-01", name: "Bandhani Dress 01", price: 1499, family: "bandhani", tag: "New" },
-  { slug: "bandhani-dress-02", name: "Bandhani Dress 02", price: 1499, family: "bandhani", tag: "New" },
-  { slug: "bandhani-dress-03", name: "Bandhani Dress 03", price: 1499, family: "bandhani", tag: "New" },
-  { slug: "bandhani-dress-04", name: "Bandhani Dress 04", price: 1499, family: "bandhani" },
-  { slug: "bandhani-dress-05", name: "Bandhani Dress 05", price: 1499, family: "bandhani", tag: "Popular" },
-  { slug: "bandhani-dress-06", name: "Bandhani Dress 06", price: 1499, family: "bandhani" },
-  { slug: "bandhani-dress-07", name: "Bandhani Dress 07", price: 1499, family: "bandhani" },
+  { slug: "bandhani-dress-01", name: "Bandhani Dress 01", price: 800, family: "bandhani", tag: "New" },
+  { slug: "bandhani-dress-02", name: "Bandhani Dress 02", price: 800, family: "bandhani", tag: "New" },
+  { slug: "bandhani-dress-03", name: "Bandhani Dress 03", price: 800, family: "bandhani", tag: "New" },
+  { slug: "bandhani-dress-04", name: "Bandhani Dress 04", price: 800, family: "bandhani" },
+  { slug: "bandhani-dress-05", name: "Bandhani Dress 05", price: 800, family: "bandhani", tag: "Popular" },
+  { slug: "bandhani-dress-06", name: "Bandhani Dress 06", price: 800, family: "bandhani" },
+  { slug: "bandhani-dress-07", name: "Bandhani Dress 07", price: 800, family: "bandhani" },
 
-  { slug: "three-piece-01", name: "Three Piece Set 01", price: 2199, family: "threepiece", tag: "New" },
-  { slug: "three-piece-02", name: "Three Piece Set 02", price: 2199, family: "threepiece" },
-  { slug: "three-piece-03", name: "Three Piece Set 03", price: 2199, family: "threepiece", tag: "Popular" },
+  { slug: "three-piece-01", name: "Three Piece Set 01", price: 1000, family: "threepiece", tag: "New" },
+  { slug: "three-piece-02", name: "Three Piece Set 02", price: 650, family: "threepiece" },
+  { slug: "three-piece-03", name: "Three Piece Set 03", price: 500, family: "threepiece", tag: "Popular" },
 
-  { slug: "coord-set-01", name: "Coord Set 01", price: 1899, family: "coord", tag: "New" },
-  { slug: "coord-set-02", name: "Coord Set 02", price: 1899, family: "coord" },
-  { slug: "coord-set-03", name: "Coord Set 03", price: 1899, family: "coord" },
-  { slug: "coord-set-04", name: "Coord Set 04", price: 1899, family: "coord", tag: "Popular" },
-  { slug: "coord-set-05", name: "Coord Set 05", price: 1899, family: "coord" },
-  { slug: "coord-set-06", name: "Coord Set 06", price: 1899, family: "coord" },
-  { slug: "coord-set-07", name: "Coord Set 07", price: 1899, family: "coord" },
-  { slug: "coord-set-08", name: "Coord Set 08", price: 1899, family: "coord" },
+  { slug: "coord-set-01", name: "Coord Set 01", price: 700, family: "coord", tag: "New" },
+  { slug: "coord-set-02", name: "Coord Set 02", price: 700, family: "coord" },
+  { slug: "coord-set-03", name: "Coord Set 03", price: 700, family: "coord" },
+  { slug: "coord-set-04", name: "Coord Set 04", price: 700, family: "coord", tag: "Popular" },
+  { slug: "coord-set-05", name: "Coord Set 05", price: 700, family: "coord" },
+  { slug: "coord-set-06", name: "Coord Set 06", price: 700, family: "coord" },
+  { slug: "coord-set-07", name: "Coord Set 07", price: 700, family: "coord" },
+  { slug: "coord-set-08", name: "Coord Set 08", price: 700, family: "coord" },
 ];
 
 /** Family-level copy shared by every piece in that family. */
@@ -197,7 +199,7 @@ export const GREETING = "Hi! I would like to see the Shivansh Elegance catalog."
 
 /** Business facts used by the FAQ and structured data. REPLACE with your real policy. */
 export const business = {
-  priceRange: "₹1,499 – ₹2,199",
+  priceRange: "₹500 – ₹1,000",
   delivery: "Pan-India, dispatched in 24–48 hours, typically delivered in 3–7 business days.",
   payments: "UPI, debit and credit cards, and net banking. A payment link is shared on WhatsApp.",
   returns: "7-day exchange on unworn items with tags intact. Message us on WhatsApp to start one.",
