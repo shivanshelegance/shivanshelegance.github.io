@@ -125,6 +125,14 @@ const FAMILY: Record<
  * do NOT pad this with repeats of the main shot.
  */
 const GALLERY: Record<string, string[]> = {
+  "three-piece-01": [
+    "/images/products/three-piece-01-front.jpg",
+    "/images/products/three-piece-01-side.jpg",
+    "/images/products/three-piece-01-lifestyle.jpg",
+    "/images/products/three-piece-01-editorial.jpg",
+    "/images/products/three-piece-01-neckline.jpg",
+    "/images/products/three-piece-01-print.jpg",
+  ],
   "three-piece-02": [
     "/images/products/three-piece-02-front.jpg",
     "/images/products/three-piece-02-side.jpg",
