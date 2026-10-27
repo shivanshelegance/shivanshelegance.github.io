@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import WhatsAppIcon from "@/components/WhatsAppIcon";
 import {
   type Product,
@@ -183,12 +182,12 @@ export default function ProductDetail({ p }: { p: Product }) {
             <div className="sc-pgrid">
               {related.map((r) => (
                 <div className="sc-pcard" key={r.id}>
-                  <Link href={`/women/${r.slug}`} className="sc-pimg">
+                  <a href={`/women/${r.slug}/`} className="sc-pimg">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={r.image} alt={r.name} loading="lazy" />
-                  </Link>
+                  </a>
                   <div className="sc-pmeta">{r.category}</div>
-                  <Link href={`/women/${r.slug}`} className="sc-pname">{r.name}</Link>
+                  <a href={`/women/${r.slug}/`} className="sc-pname">{r.name}</a>
                   <div className="sc-prow">
                     <span className="sc-pprice">{r.price}</span>
                   </div>

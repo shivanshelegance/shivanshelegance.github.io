@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useMemo, useState } from "react";
 import WhatsAppIcon from "@/components/WhatsAppIcon";
 import { type Product, categoryCounts, products, site, trust, wa } from "@/lib/site";
@@ -75,13 +74,13 @@ export default function ShopGrid() {
         <div className="sc-pgrid">
           {list.map((p) => (
             <div className="sc-pcard" key={p.id}>
-              <Link href={`/women/${p.slug}`} className="sc-pimg">
+              <a href={`/women/${p.slug}/`} className="sc-pimg">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={p.image} alt={p.name} loading="lazy" />
                 {p.tag ? <span className="sc-tag">{p.tag}</span> : null}
-              </Link>
+              </a>
               <div className="sc-pmeta">{p.category}</div>
-              <Link href={`/women/${p.slug}`} className="sc-pname">{p.name}</Link>
+              <a href={`/women/${p.slug}/`} className="sc-pname">{p.name}</a>
               <div className="sc-prow">
                 <span className="sc-pprice">{p.price}</span>
               </div>
