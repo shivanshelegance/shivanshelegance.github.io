@@ -30,6 +30,8 @@ export type Product = {
   category: string;
   price: string;
   image: string;
+  /** Extra views — front, side, lifestyle, editorial, neckline, fabric macro. */
+  gallery?: string[];
   /** Larger shot used as the hero on the detail page. */
   detailImage?: string;
   tag?: string;
@@ -117,6 +119,31 @@ const FAMILY: Record<
   },
 };
 
+/**
+ * Extra views per product, in display order.
+ * Only products we have additional real photography for appear here —
+ * do NOT pad this with repeats of the main shot.
+ */
+const GALLERY: Record<string, string[]> = {
+  "three-piece-02": [
+    "/images/products/three-piece-02-front.jpg",
+    "/images/products/three-piece-02-side.jpg",
+    "/images/products/three-piece-02-lifestyle.jpg",
+    "/images/products/three-piece-02-editorial.jpg",
+    "/images/products/three-piece-02-neckline.jpg",
+    "/images/products/three-piece-02-embroidery.jpg",
+    "/images/products/three-piece-02-print.jpg",
+  ],
+  "coord-set-02": [
+    "/images/products/coord-set-02-front.jpg",
+    "/images/products/coord-set-02-side.jpg",
+    "/images/products/coord-set-02-lifestyle.jpg",
+    "/images/products/coord-set-02-editorial.jpg",
+    "/images/products/coord-set-02-neckline.jpg",
+    "/images/products/coord-set-02-embroidery.jpg",
+  ],
+};
+
 const money = (n: number) => `\u20b9${n.toLocaleString("en-IN")}`;
 
 export const categories: Category[] = (["bandhani", "threepiece", "coord"] as const).map((f) => ({
@@ -133,6 +160,7 @@ export const products: Product[] = CATALOGUE.map((c, i) => {
     category: fam.category,
     price: money(c.price),
     image: `/images/products/${c.slug}.jpg`,
+    gallery: GALLERY[c.slug],
     tag: c.tag,
     order: i + 1,
     sizes: ["S", "M", "L", "XL", "XXL"],
@@ -147,6 +175,11 @@ export const products: Product[] = CATALOGUE.map((c, i) => {
 
 export function productBySlug(slug: string): Product | undefined {
   return products.find((p) => p.slug === slug);
+}
+
+/** Every real photograph of a product: the catalogue shot first, then extra views. */
+export function productImages(p: Product): string[] {
+  return [p.image, ...(p.gallery ?? []).filter((g) => g !== p.image)];
 }
 
 /** The filter chips on the Women's page, derived from the catalogue. */

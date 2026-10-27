@@ -5,6 +5,7 @@ import Link from "next/link";
 import WhatsAppIcon from "@/components/WhatsAppIcon";
 import {
   type Product,
+  productImages,
   products,
   shipping,
   site,
@@ -18,6 +19,10 @@ export default function ProductDetail({ p }: { p: Product }) {
   const [tab, setTab] = useState<(typeof TABS)[number]>("Product Details");
   const [size, setSize] = useState<string>(p.sizes?.[1] ?? "");
 
+  const shots = productImages(p);
+  const [active, setActive] = useState(0);
+  const current = shots[Math.min(active, shots.length - 1)];
+
   const related = products.filter((x) => x.slug !== p.slug).slice(0, 4);
 
   const msg = `Hi ${site.brand}! I'd like to order the ${p.name} (${p.price})${
@@ -28,9 +33,30 @@ export default function ProductDetail({ p }: { p: Product }) {
     <div className="sc-wrap">
       <div className="sc-detail">
         <div className="sc-dgrid">
-          <div className="sc-dimg">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={p.image} alt={p.name} />
+          <div className="sc-gal">
+            <div className="sc-dimg">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={current} alt={`${p.name} — view ${active + 1} of ${shots.length}`} />
+            </div>
+
+            {shots.length > 1 ? (
+              <div className="sc-thumbs" role="tablist" aria-label={`${p.name} photo gallery`}>
+                {shots.map((src, i) => (
+                  <button
+                    key={src}
+                    type="button"
+                    className="sc-thumb"
+                    role="tab"
+                    aria-selected={i === active}
+                    aria-label={`Show photo ${i + 1} of ${shots.length}`}
+                    onClick={() => setActive(i)}
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={src} alt="" loading="lazy" />
+                  </button>
+                ))}
+              </div>
+            ) : null}
           </div>
 
           <div className="sc-dinfo">

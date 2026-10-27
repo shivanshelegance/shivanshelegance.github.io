@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import JsonLd from "@/components/JsonLd";
 import ProductDetail from "@/components/ProductDetail";
-import { products, productBySlug, site } from "@/lib/site";
+import { productImages, products, productBySlug, site } from "@/lib/site";
 import { url } from "@/lib/seo";
 
 type Params = { params: Promise<{ slug: string }> };
@@ -37,7 +37,7 @@ export default async function ProductPage({ params }: Params) {
     "@type": "Product",
     name: p.name,
     description: p.description,
-    image: [url(p.image)],
+    image: productImages(p).map(url),
     sku: p.id,
     category: p.category,
     brand: { "@type": "Brand", name: site.brand },
