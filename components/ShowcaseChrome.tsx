@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import WhatsAppIcon from "@/components/WhatsAppIcon";
@@ -8,10 +7,10 @@ import { GREETING, products, site, wa } from "@/lib/site";
 
 const NAV = [
   { href: "/", label: "Home" },
-  { href: "/women", label: "Women" },
-  { href: "/men", label: "Men" },
-  { href: "/kids", label: "Child" },
-  { href: "/about", label: "About" },
+  { href: "/women/", label: "Women" },
+  { href: "/men/", label: "Men" },
+  { href: "/kids/", label: "Child" },
+  { href: "/about/", label: "About" },
 ];
 
 export function isActive(pathname: string, href: string) {
@@ -32,21 +31,21 @@ export function ShowcaseHeader({ overHero = false }: { overHero?: boolean }) {
   return (
     <header className={overHero ? "over-hero" : undefined}>
       <div className="wrap hd">
-        <Link className="logo" href="/" aria-label={`${site.brand} home`}>
+        <a className="logo" href="/" aria-label={`${site.brand} home`}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/logo-gold.svg" alt={site.brand} />
-        </Link>
+        </a>
 
         <nav>
           {NAV.map((n) => (
-            <Link
+            <a
               key={n.href}
               href={n.href}
               className={isActive(pathname, n.href) ? "on" : undefined}
               aria-current={isActive(pathname, n.href) ? "page" : undefined}
             >
               {n.label}
-            </Link>
+            </a>
           ))}
           <a
             className="btn btn-wa"
@@ -95,7 +94,7 @@ export function ShowcaseFooter() {
             <ul>
               {NAV.map((n) => (
                 <li key={n.href}>
-                  <Link href={n.href}>{n.label === "About" ? "Our Story" : n.label}</Link>
+                  <a href={n.href}>{n.label === "About" ? "Our Story" : n.label}</a>
                 </li>
               ))}
             </ul>
@@ -106,14 +105,14 @@ export function ShowcaseFooter() {
             <ul>
               {families.map((f) => (
                 <li key={f}>
-                  <Link href="/women">{f}</Link>
+                  <a href="/women/">{f}</a>
                 </li>
               ))}
               <li>
-                <Link href="/faq">FAQ</Link>
+                <a href="/faq/">FAQ</a>
               </li>
               <li>
-                <Link href="/contact">Contact</Link>
+                <a href="/contact/">Contact</a>
               </li>
             </ul>
           </div>

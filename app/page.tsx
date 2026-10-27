@@ -1,4 +1,3 @@
-import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 import WhatsAppIcon from "@/components/WhatsAppIcon";
 import { GREETING, categories, features, products, site, wa } from "@/lib/site";
@@ -93,7 +92,7 @@ export default function Home() {
           <div className="sc-sh">SHOP BY CATEGORY</div>
           <div className="sc-cgrid">
             {categories.map((c) => (
-              <Link className="sc-cat" href="/women" key={c.id}>
+              <a className="sc-cat" href="/women/" key={c.id}>
                 <div
                   className="ph prod"
                   role="img"
@@ -108,7 +107,7 @@ export default function Home() {
                     View Collection &nbsp;→
                   </span>
                 </div>
-              </Link>
+              </a>
             ))}
           </div>
         </div>
@@ -167,10 +166,10 @@ export default function Home() {
             Explore our latest collection of elegant and trendy outfits, crafted for
             every occasion.
           </p>
-          <Link className="sc-btn sc-gold" href="/women">
+          <a className="sc-btn sc-gold" href="/women/">
             <WhatsAppIcon />
             Browse Women&apos;s Collection &nbsp;→
-          </Link>
+          </a>
         </div>
         {featured.map((p, i) => (
           <div className={`sc-pol sc-p${i + 1}`} key={p.id}>

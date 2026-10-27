@@ -1,4 +1,3 @@
-import Link from "next/link";
 import WhatsAppIcon from "@/components/WhatsAppIcon";
 import { products, site, wa } from "@/lib/site";
 
@@ -58,12 +57,12 @@ export default function ComingSoon({
         <div className="sc-pgrid">
           {teasers.map((p) => (
             <div className="sc-pcard" key={p.id}>
-              <Link href={`/women/${p.slug}`} className="sc-pimg">
+              <a href={`/women/${p.slug}/`} className="sc-pimg">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={p.image} alt={p.name} loading="lazy" />
-              </Link>
+              </a>
               <div className="sc-pmeta">{p.category}</div>
-              <Link href={`/women/${p.slug}`} className="sc-pname">{p.name}</Link>
+              <a href={`/women/${p.slug}/`} className="sc-pname">{p.name}</a>
               <div className="sc-prow">
                 <span className="sc-pprice">{p.price}</span>
               </div>
