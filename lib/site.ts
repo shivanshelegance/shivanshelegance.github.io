@@ -125,6 +125,30 @@ const FAMILY: Record<
  * do NOT pad this with repeats of the main shot.
  */
 const GALLERY: Record<string, string[]> = {
+  "bandhani-dress-04": [
+    "/images/products/bandhani-dress-04-front.jpg",
+    "/images/products/bandhani-dress-04-side.jpg",
+    "/images/products/bandhani-dress-04-lifestyle.jpg",
+    "/images/products/bandhani-dress-04-editorial.jpg",
+    "/images/products/bandhani-dress-04-neckline.jpg",
+    "/images/products/bandhani-dress-04-print.jpg",
+  ],
+  "coord-set-05": [
+    "/images/products/coord-set-05-front.jpg",
+    "/images/products/coord-set-05-side.jpg",
+    "/images/products/coord-set-05-lifestyle.jpg",
+    "/images/products/coord-set-05-editorial.jpg",
+    "/images/products/coord-set-05-neckline.jpg",
+    "/images/products/coord-set-05-embroidery.jpg",
+  ],
+  "coord-set-06": [
+    "/images/products/coord-set-06-front.jpg",
+    "/images/products/coord-set-06-side.jpg",
+    "/images/products/coord-set-06-lifestyle.jpg",
+    "/images/products/coord-set-06-editorial.jpg",
+    "/images/products/coord-set-06-neckline.jpg",
+    "/images/products/coord-set-06-embroidery.jpg",
+  ],
   "three-piece-01": [
     "/images/products/three-piece-01-front.jpg",
     "/images/products/three-piece-01-side.jpg",
